@@ -1,4 +1,4 @@
-How to run project?
+How to install and run project?
 
 
 1. Download progect
