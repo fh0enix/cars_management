@@ -4,7 +4,7 @@ class SearchEngine
 
   def initialize
     # load data from YAML
-    @data = YAML.safe_load_file('.db/db.yml', symbolize_names: true)
+    @data = YAML.safe_load_file('db/db.yml', symbolize_names: true)
 
     # create hash for user ansver
     @user_data = {make: nil, model: nil, year_from: nil,  year_to: nil, price_from: nil, price_to: nil, sort_option: nil, sort_direction: nil}
