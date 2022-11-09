@@ -7,7 +7,16 @@ class SearchEngine
     @data = YAML.safe_load_file('./.db/db.yml', symbolize_names: true)
 
     # create hash for user ansver
-    @user_data = {make: nil, model: nil, year_from: nil,  year_to: nil, price_from: nil, price_to: nil, sort_option: nil, sort_direction: nil}
+    @user_data = {
+      make: nil, 
+      model: nil, 
+      year_from: nil,  
+      year_to: nil, 
+      price_from: nil, 
+      price_to: nil, 
+      sort_option: nil, 
+      sort_direction: nil
+    }
 
     # create empty array for user result search
     @results_car = []
@@ -23,7 +32,7 @@ class SearchEngine
 
   # gets ansver from user
   def gets_ansver_from_user
-    puts 'Please select search rules.'
+        puts 'Please select search rules.'
 
     print 'Please choose make: '
     @user_data[:make] = gets.strip.upcase
@@ -92,6 +101,7 @@ class SearchEngine
     @data.each do |index|
       make = [0, index[:make].upcase]
       model = [0, index[:model].upcase]
+      
       if make.include?(@user_data[:make]) and
         model.include?(@user_data[:model]) and
         index[:year].between?(@user_data[:year_from], @user_data[:year_to]) and
@@ -111,7 +121,7 @@ class SearchEngine
 
     if @user_data[:sort_direction] == 'asc'
        @results_car.reverse!
-     end
+    end
   end
 
   # print results
@@ -122,7 +132,7 @@ class SearchEngine
       index.each do |key, value|
         puts "#{key}: #{value}"
       end
-      puts '----------------------------------'
+    puts '----------------------------------'
     end
   end
 end
