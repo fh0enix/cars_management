@@ -78,9 +78,9 @@ class SearchEngine
     @make = []
     @model = []
 
-    @data.each do |index|
-      @make << index[:make].upcase
-      @model << index[:model].upcase
+    @data.each do |car|
+      @make << car[:make].upcase
+      @model << car[:model].upcase
     end
 
     if @make.include?(@user_data[:make]) == false
@@ -93,15 +93,15 @@ class SearchEngine
   end
 
   def create_searching_rules_result
-    @data.each do |index|
-      make = [0, index[:make].upcase]
-      model = [0, index[:model].upcase]
+    @data.each do |car|
+      make = [0, car[:make].upcase]
+      model = [0, car[:model].upcase]
       
       if make.include?(@user_data[:make]) and
         model.include?(@user_data[:model]) and
-        index[:year].between?(@user_data[:year_from], @user_data[:year_to]) and
-        index[:price].between?(@user_data[:price_from], @user_data[:price_to])
-        @results_car.push(index)
+        car[:year].between?(@user_data[:year_from], @user_data[:year_to]) and
+        car[:price].between?(@user_data[:price_from], @user_data[:price_to])
+        @results_car.push(car)
       end
     end
   end
@@ -121,8 +121,8 @@ class SearchEngine
   def print_results
     puts '----------------------------------'
     puts 'Results:'
-    @results_car.each do |index|
-      index.each do |key, value|
+    @results_car.each do |car|
+      car.each do |key, value|
         puts "#{key}: #{value}"
       end
     puts '----------------------------------'
