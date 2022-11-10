@@ -64,7 +64,7 @@ class SearchEngine
 
     if @user_data[:price_from] > @user_data[:price_to] ||
       @user_data[:price_to] == 0
-      @user_data[:price_to] = 2**32
+      @user_data[:price_to] = Time.now.to_i
     end
 
     if @user_data[:sort_direction] != 'asc'
