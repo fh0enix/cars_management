@@ -3,7 +3,6 @@ require 'yaml'
 class SearchEngine
 
   def initialize
-    # load data from YAML
     @data = YAML.safe_load_file('./.db/db.yml', symbolize_names: true)
 
     @user_data = {
