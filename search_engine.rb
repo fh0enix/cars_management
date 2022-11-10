@@ -6,7 +6,6 @@ class SearchEngine
     # load data from YAML
     @data = YAML.safe_load_file('./.db/db.yml', symbolize_names: true)
 
-    # create hash for user ansver
     @user_data = {
       make: nil, 
       model: nil, 
@@ -17,8 +16,7 @@ class SearchEngine
       sort_option: nil, 
       sort_direction: nil
     }
-
-    # create empty array for user result search
+    
     @results_car = []
   end
 
@@ -30,7 +28,6 @@ class SearchEngine
     print_results
   end
 
-  # gets ansver from user
   def gets_ansver_from_user
         puts 'Please select search rules.'
 
@@ -59,10 +56,9 @@ class SearchEngine
     @user_data[:sort_direction] = gets.strip.downcase
   end
 
-  # cleer user ansver from wrong data
   def cleer_user_ansver_from_wrong_data
     if @user_data[:year_to] < @user_data[:year_from] ||
-      @user_data[:year_to] = 0
+      @user_data[:year_to] == 0
       @user_data[:year_to] = Time.new.year
     end
 
@@ -96,7 +92,6 @@ class SearchEngine
     end
   end
 
-  # create searching rules result
   def create_searching_rules_result
     @data.each do |index|
       make = [0, index[:make].upcase]
@@ -111,7 +106,6 @@ class SearchEngine
     end
   end
 
-  # create sorting results
   def create_sorting_results
     if @user_data[:sort_option] == 'price'
      @results_car.sort_by!{ |k| k[:price]}
@@ -124,7 +118,6 @@ class SearchEngine
     end
   end
 
-  # print results
   def print_results
     puts '----------------------------------'
     puts 'Results:'
