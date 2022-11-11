@@ -1,4 +1,3 @@
-require './search_engine.rb'
+require_relative 'search_engine'
 
-search_engine = SearchEngine.new
-search_engine.search
+SearchEngine.new.run
