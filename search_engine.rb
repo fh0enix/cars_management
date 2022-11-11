@@ -7,7 +7,7 @@ require_relative 'result_car'
 
 class SearchEngine
   def initialize
-	 @data = YAML.safe_load_file('./db/db.yml', symbolize_names: true)
+	 @data = YAML.safe_load_file('./.db/db.yml', symbolize_names: true)
 	 @user_data = {}
 	 @results_car = []
   end
@@ -24,6 +24,3 @@ class SearchEngine
     Printer.new(@results_car).results
   end
 end
-
-
-
