@@ -14,13 +14,9 @@ class SearchEngine
 
   def run
     @user_data = Preprocessing.new(@user_data).result_data
-    puts @user_data
     @user_data = Formatting.new(@data, @user_data).result_data
-    puts @user_data
     @results_car = ResultCar.new(@data, @user_data).results_car
-    puts @results_car
     @results_car = Sorting.new(@user_data, @results_car).results_car
-    puts @results_car
     Printer.new(@results_car).results
   end
 end
