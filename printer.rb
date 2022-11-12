@@ -7,10 +7,10 @@ class Printer
     puts '----------------------------------'
     puts 'Results:'
     @results_car.each do |car|
-      car.each do |key, value|
-      puts "#{key}: #{value}"
-    end
-    puts '----------------------------------'
+      car.each do |attribute_name, attribute_value|
+        puts "#{attribute_name}: #{attribute_value}"
+      end
+      puts '----------------------------------'
     end
   end
 end
