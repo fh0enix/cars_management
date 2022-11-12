@@ -10,9 +10,9 @@ class ResultCar
       make = [0, car[:make].upcase]
       model = [0, car[:model].upcase]
 
-      if make.include?(@user_data[:make]) and
-        model.include?(@user_data[:model]) and
-        car[:year].between?(@user_data[:year_from], @user_data[:year_to]) and
+      if @user_data[:make] == car[:make].upcase ||
+        @user_data[:model] == car[:model].upcase ||
+        car[:year].between?(@user_data[:year_from], @user_data[:year_to]) &&
         car[:price].between?(@user_data[:price_from], @user_data[:price_to])
         @results_car.push(car)
       end
