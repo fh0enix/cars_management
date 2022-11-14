@@ -1,0 +1,112 @@
+- id: 1ec46226-330f-11ec-8d3d-0242ac130003
+  make: Ford
+  model: Fusion
+  year: 2017
+  odometer: 65000
+  price: 18000
+  description: Selling a good car
+  date_added: 18/09/21
+- id: 32e2db70-330f-11ec-8d3d-0242ac130003
+  make: Chevrolet
+  model: Volt
+  year: 2015
+  odometer: 35000
+  price: 14000
+  description: Great choice
+  date_added: 15/07/21
+- id: 418f99b0-330f-11ec-8d3d-0242ac130003
+  make: Lexus
+  model: ES 350
+  year: 2008
+  odometer: 121000
+  price: 13000
+  description: Sell the car in an ideal condition
+  date_added: 10/08/21
+- id: 4a1e7876-330f-11ec-8d3d-0242ac130003
+  make: Skoda
+  model: Octavia Tour
+  year: 2010
+  odometer: 60000
+  price: 8700
+  description: For fans and connoisseurs of the skoda brand
+  date_added: 15/08/21
+- id: 52444580-330f-11ec-8d3d-0242ac130003
+  make: Infiniti
+  model: Q50
+  year: 2017
+  odometer: 32000
+  price: 21600
+  description: The condition of the car, as with a car dealership
+  date_added: 20/08/21
+- id: 693f8416-330f-11ec-8d3d-0242ac130003
+  make: Audi
+  model: A4
+  year: 2012
+  odometer: 103000
+  price: 12500
+  description: Audi a4 quattro premium 2012
+  date_added: 21/08/21
+- id: 7073efd8-330f-11ec-8d3d-0242ac130003
+  make: Ford
+  model: Focus
+  year: 2017
+  odometer: 103000
+  price: 19000
+  description: Like new
+  date_added: 24/08/21
+- id: 7935e180-330f-11ec-8d3d-0242ac130003
+  make: Audi
+  model: Q7
+  year: 2012
+  odometer: 180000
+  price: 22800
+  description: Audi q7 3.0 tdi climate control cruise control
+  date_added: 24/08/21
+- id: 808db9e4-330f-11ec-8d3d-0242ac130003
+  make: BMW
+  model: X5
+  year: 2003
+  odometer: 245000
+  price: 10500
+  description: 'Car in very good condition, LPG installed'
+  date_added: 28/09/21
+- id: 8841f970-330f-11ec-8d3d-0242ac130003
+  make: Renault
+  model: Megane
+  year: 2018
+  odometer: 245000
+  price: 10500
+  description: 'Car in very good condition, LPG installed'
+  date_added: 28/09/21
+- id: 8f724eb6-330f-11ec-8d3d-0242ac130003
+  make: Volkswagen
+  model: Passat
+  year: 2013
+  odometer: 205000
+  price: 12200
+  description: Sell volkswagen passat b7 bluemotion technology
+  date_added: 10/10/21
+- id: 9676171a-330f-11ec-8d3d-0242ac130003
+  make: BMW
+  model: X5
+  year: 2014
+  odometer: 130000
+  price: 29900
+  description: 'The car is in perfect condition, fully serviced'
+  date_added: 8/10/21
+- id: 9e6da960-330f-11ec-8d3d-0242ac130003
+  make: Volkswagen
+  model: Tiguan
+  year: 2013
+  odometer: 157000
+  price: 15600
+  description: Official car
+  date_added: 3/10/21
+- id: a64dd240-330f-11ec-8d3d-0242ac130003
+  make: Peugeot
+  model: '3008'
+  year: 2013
+  odometer: 160000
+  price: 10650
+  description: Official car
+  date_added: 1/10/21
