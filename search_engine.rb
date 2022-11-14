@@ -7,16 +7,16 @@ require_relative 'result_car'
 
 class SearchEngine
   def initialize
-	 @data = YAML.safe_load_file('./.db/db.yml', symbolize_names: true)
-	 @user_data = {}
-	 @results_car = []
+   @data = YAML.safe_load_file('./.db/db.yml', symbolize_names: true)
+   @user_data = {}
+   @results_car = []
   end
 
   def run
-    @user_data = Preprocessing.new(@user_data).result_data
-    @user_data = Formatting.new(@data, @user_data).result_data
-    @results_car = ResultCar.new(@data, @user_data).results_car
-    @results_car = Sorting.new(@user_data, @results_car).results_car
+    Preprocessing.new(@user_data).call
+    Formatting.new(@data, @user_data).call
+    ResultCar.new(@data, @user_data, @results_car).call
+    Sorting.new(@user_data, @results_car).call
     Printer.new(@results_car).results
   end
 end
