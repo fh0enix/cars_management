@@ -1,11 +1,10 @@
 class Preprocessing
-  attr_reader :result_data
-
   def initialize(user_data)
     @result_data = user_data
+  end
 
+  def call
     puts 'Please select search rules.'
-
     print 'Please choose make: '
     @result_data[:make] = gets.strip.upcase
 
@@ -29,5 +28,7 @@ class Preprocessing
 
     print 'Please choose sort direction(desc|asc): '
     @result_data[:sort_direction] = gets.strip.downcase
+
+    @result_data
   end
- end
+end
