@@ -1,14 +1,14 @@
 class Formatting
-  attr_reader :result_data
-
   def initialize(data, user_data)
     @data = data
     @result_data = user_data
-	  @make = []
+    @make = []
     @model = []
-	  @HIPRICE = 2**32
+    @HIPRICE = 2**32
+  end
 
-   if @result_data[:year_to] < @result_data[:year_from] ||
+  def call
+    if @result_data[:year_to] < @result_data[:year_from] ||
       @result_data[:year_to] == 0
       @result_data[:year_to] = Time.new.year
     end
@@ -18,12 +18,12 @@ class Formatting
       @result_data[:price_to] = @HIPRICE
     end
 
-    if result_data[:sort_direction] != 'asc'
-      result_data[:sort_direction] = 'desc'
+    if @result_data[:sort_direction] != 'asc'
+      @result_data[:sort_direction] = 'desc'
     end
 
-    if result_data[:sort_option] != 'price'
-      result_data[:sort_option] = 'date_added'
+    if @result_data[:sort_option] != 'price'
+      @result_data[:sort_option] = 'date_added'
     end
 
     @data.each do |car|
@@ -38,5 +38,6 @@ class Formatting
     if @model.include?(@result_data[:model]) == false
       @result_data[:model] = 0
     end
+    @result_data
   end
 end
