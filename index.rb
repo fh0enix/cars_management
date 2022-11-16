@@ -1,3 +1,3 @@
-require_relative 'search_engine'
+require_relative './search engine/search_engine'
 
 SearchEngine.new.run
