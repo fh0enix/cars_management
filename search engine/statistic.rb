@@ -15,10 +15,10 @@ class Statistic
   def call
     if @stat.key?(cleener)
       @stat[@user_data] += 1
-      File.open("./.db/st.yml", 'w') { |f| YAML.dump(@stat, f) }
+      File.open("./.db/searches.yml", 'w') { |f| YAML.dump(@stat, f) }
     else
       @stat[@user_data] = 1
-      File.open("./.db/st.yml", 'w') { |f| YAML.dump(@stat, f) }
+      File.open("./.db/searches.yml", 'w') { |f| YAML.dump(@stat, f) }
     end
     @stat[@user_data]
   end

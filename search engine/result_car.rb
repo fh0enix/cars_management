@@ -11,9 +11,12 @@ class ResultCar
         @user_data[:make] == 0
         if @user_data[:model] == car[:model].upcase ||
           @user_data[:model] == 0
-          if car[:year].between?(@user_data[:year_from], @user_data[:year_to]) &&
-            car[:price].between?(@user_data[:price_from], @user_data[:price_to])
-            @results_car.push(car)
+          if car[:year].between?(@user_data[:year_from], @user_data[:year_to]) ||
+            car[:year] > @user_data[:year_from]
+            if car[:price].between?(@user_data[:price_from], @user_data[:price_to]) ||
+              car[:price] > @user_data[:price_from]
+              @results_car.push(car)
+            end
           end
         end
       end

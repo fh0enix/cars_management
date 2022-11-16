@@ -4,21 +4,9 @@ class Formatting
     @result_data = user_data
     @make = []
     @model = []
-    @HIPRICE = 2**22
-    @HIYEAR = 2**12
   end
 
   def call
-    if @result_data[:year_to] < @result_data[:year_from] ||
-      @result_data[:year_to] == 0
-      @result_data[:year_to] = @HIYEAR
-    end
-
-    if @result_data[:price_from] > @result_data[:price_to] ||
-      @result_data[:price_to] == 0
-      @result_data[:price_to] = @HIPRICE
-    end
-
     if @result_data[:sort_direction] != 'asc'
       @result_data[:sort_direction] = 'desc'
     end
