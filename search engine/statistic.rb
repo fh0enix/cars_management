@@ -5,10 +5,11 @@ class Statistic
   end
 
   def cleener
-    @user_data = "make:#{@user_data[:make]} " +
-                 "model:#{@user_data[:model]} " +
-                 "year:#{@user_data[:year_from]}-#{@user_data[:year_to]} " +
+    @user_data = "make:#{@user_data[:make]}_" +
+                 "model:#{@user_data[:model]}_" +
+                 "year:#{@user_data[:year_from]}-#{@user_data[:year_to]}_" +
                  "price:#{@user_data[:price_from]}-#{@user_data[:price_to]}"
+    @user_data.to_sym
     @user_data
   end
 
