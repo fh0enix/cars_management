@@ -3,26 +3,20 @@ class Statistic
     @stat = stat
     @results_car = results_car
     @user_data = user_data
-    @id = ''
   end
 
-  def delete_sort
+  def delete_add
     @user_data.delete(:sort_option)
     @user_data.delete(:sort_direction)
-  end
-
-  def id
-    @id = "ID_#{@user_data[:make]}" +
+    @user_data[:requests_quantity] = 1
+    @user_data[:id] = "ID_#{@user_data[:make]}" +
                  "#{@user_data[:model]}" +
                  "#{@user_data[:year_from]}#{@user_data[:year_to]}" +
                  "#{@user_data[:price_from]}#{@user_data[:price_to]}"
-    @id.to_sym
-    @user_data[@id] = 1
-    @id
   end
 
   def call
-    delete_sort
+    delete_add
 
     if File.exist?("./.db/searches.yml")
       @stat = YAML.load_file('./.db/searches.yml')
@@ -31,11 +25,11 @@ class Statistic
       @stat = [{SEARCHES: 'CAR'}]
     end
 
-    if @stat.any? { |request| request.key?(id)}
+    if @stat.any? { |request| request.value?(@user_data[:id])}
       @stat.each do |request|
-        if request.key?(@id)
-          request[@id] += 1
-          @user_data[@id] = request[@id]
+        if request.value?(@user_data[:id])
+          request[:requests_quantity] += 1
+          @user_data[:requests_quantity] = request[:requests_quantity]
         end
       end
     else
@@ -44,6 +38,6 @@ class Statistic
 
     File.open("./.db/searches.yml", 'w') { |f| YAML.dump(@stat, f) }
 
-    @user_data[@id]
+    @user_data[:requests_quantity]
   end
 end
