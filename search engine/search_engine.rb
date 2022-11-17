@@ -8,10 +8,10 @@ require_relative 'statistic'
 
 class SearchEngine
   def initialize
-   @data = YAML.safe_load_file('./.db/db.yml', symbolize_names: true)
-   @stat = YAML.safe_load_file('./.db/searches.yml')
-   @user_data = {}
-   @results_car = []
+    @data = YAML.safe_load_file('./.db/db.yml', symbolize_names: true)
+    @user_data = {}
+    @results_car = []
+    @stat = []
   end
 
   def run

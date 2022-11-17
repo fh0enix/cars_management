@@ -21,7 +21,7 @@ class Printer
   def stat
     puts '----------------------------------'
     puts 'Statistic:'
-    puts "Total Quantity: #{@results_car.size}"
-    puts "Requests quantity: #{Statistic.new(@user_data, @stat).call}"
+    puts "Total Quantity: #{@user_data[:results_car]}"
+    puts "Requests quantity: #{Statistic.new(@user_data, @results_car, @stat).call}"
   end
 end

@@ -21,6 +21,7 @@ class ResultCar
         end
       end
     end
+    @user_data[:results_car] = @results_car.size
     @results_car
   end
 end
