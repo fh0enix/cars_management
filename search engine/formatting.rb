@@ -7,26 +7,16 @@ class Formatting
   end
 
   def call
-    if @result_data[:sort_direction] != 'asc'
-      @result_data[:sort_direction] = 'desc'
-    end
-
-    if @result_data[:sort_option] != 'price'
-      @result_data[:sort_option] = 'date_added'
-    end
+    @result_data[:sort_direction] = 'desc' if @result_data[:sort_direction] != 'asc'
+    @result_data[:sort_option] = 'date_added' if @result_data[:sort_option] != 'price'
 
     @data.each do |car|
       @make << car[:make].upcase
       @model << car[:model].upcase
     end
 
-    if @make.include?(@result_data[:make]) == false
-     @result_data[:make] = 0
-    end
-
-    if @model.include?(@result_data[:model]) == false
-      @result_data[:model] = 0
-    end
+    @result_data[:make] = nil if @make.include?(@result_data[:make]) == false
+    @result_data[:model] = nil if @model.include?(@result_data[:model]) == false
     @result_data
   end
 end

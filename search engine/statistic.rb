@@ -10,9 +10,9 @@ class Statistic
     @user_data.delete(:sort_direction)
     @user_data[:requests_quantity] = 1
     @user_data[:id] = "ID_#{@user_data[:make]}" +
-                 "#{@user_data[:model]}" +
-                 "#{@user_data[:year_from]}#{@user_data[:year_to]}" +
-                 "#{@user_data[:price_from]}#{@user_data[:price_to]}"
+                      "#{@user_data[:model]}" +
+                      "#{@user_data[:year_from]}#{@user_data[:year_to]}" +
+                      "#{@user_data[:price_from]}#{@user_data[:price_to]}"
   end
 
   def call
@@ -22,7 +22,6 @@ class Statistic
       @stat = YAML.load_file('./.db/searches.yml')
     else
       File.new("./.db/searches.yml", "w")
-      @stat = [{SEARCHES: 'CAR'}]
     end
 
     if @stat.any? { |request| request.value?(@user_data[:id])}
@@ -33,11 +32,10 @@ class Statistic
         end
       end
     else
-      @stat.push(@user_data)
+    @stat.push(@user_data)
     end
 
     File.open("./.db/searches.yml", 'w') { |f| YAML.dump(@stat, f) }
-
     @user_data[:requests_quantity]
   end
 end
