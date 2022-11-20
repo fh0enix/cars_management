@@ -15,8 +15,8 @@ class Formatting
       @model << car[:model].upcase
     end
 
-    @result_data[:make] = nil if @make.include?(@result_data[:make]) == false
-    @result_data[:model] = nil if @model.include?(@result_data[:model]) == false
+    @result_data[:make] = nil unless @make.include?(@result_data[:make])
+    @result_data[:model] = nil unless @model.include?(@result_data[:model])
     @result_data
   end
 end
