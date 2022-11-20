@@ -19,7 +19,8 @@ class SearchEngine
     Formatting.new(@data, @user_data).call
     ResultCar.new(@data, @user_data, @results_car).call
     Sorting.new(@user_data, @results_car).call
-    Printer.new(@results_car, @user_data, @stat).stat
-    Printer.new(@results_car, @user_data, @stat).results
+    printer = Printer.new(@results_car, @user_data, @stat)
+    printer.stat
+    printer.results
   end
 end
