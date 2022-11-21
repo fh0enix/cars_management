@@ -1,41 +1,33 @@
 class Statistic
+  SEARCH_FIELDS = [:make, :model,
+                  :year_from, :year_to,
+                  :price_from, :price_to]
+
   def initialize(user_data, results_car, stat)
     @stat = stat
     @results_car = results_car
     @user_data = user_data
   end
 
-  def delete_add
-    @user_data.delete(:sort_option)
-    @user_data.delete(:sort_direction)
-    @user_data[:requests_quantity] = 1
-    @user_data[:id] = "ID_#{@user_data[:make]}" +
-                      "#{@user_data[:model]}" +
-                      "#{@user_data[:year_from]}#{@user_data[:year_to]}" +
-                      "#{@user_data[:price_from]}#{@user_data[:price_to]}"
-  end
-
   def call
-    delete_add
-
     if File.exist?("./.db/searches.yml")
       @stat = YAML.load_file('./.db/searches.yml')
     else
       File.new("./.db/searches.yml", "w")
     end
 
-    if @stat.any? { |request| request.value?(@user_data[:id])}
-      @stat.each do |request|
-        if request.value?(@user_data[:id])
-          request[:requests_quantity] += 1
-          @user_data[:requests_quantity] = request[:requests_quantity]
-        end
-      end
+    match_index = @stat.index { |stat_req| @user_data.slice(*SEARCH_FIELDS) == stat_req.slice(*SEARCH_FIELDS)}
+    if @stat.empty? || match_index.nil?
+      save_search = @user_data.slice(*SEARCH_FIELDS)
+      save_search[:requests_quantity] = 1
+      save_search[:total_qantity] = @results_car.size
+      @stat.push(user_search)
+      File.open("./.db/searches.yml", 'w') { |f| YAML.dump(@stat, f) }
     else
-    @stat.push(@user_data)
+      @stat[match_index][:requests_quantity] += 1
+      @stat[match_index][:total_qantity] = @results_car.size
+      File.open("./.db/searches.yml", 'w') { |f| YAML.dump(@stat, f) }
+      @stat[match_index][:requests_quantity]
     end
-
-    File.open("./.db/searches.yml", 'w') { |f| YAML.dump(@stat, f) }
-    @user_data[:requests_quantity]
   end
 end
