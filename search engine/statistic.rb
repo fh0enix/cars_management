@@ -21,12 +21,13 @@ class Statistic
       save_search = @user_data.slice(*SEARCH_FIELDS)
       save_search[:requests_quantity] = 1
       save_search[:total_qantity] = @results_car.size
-      @stat.push(user_search)
-      File.open("./.db/searches.yml", 'w') { |f| YAML.dump(@stat, f) }
+      @stat.push(save_search)
+      File.write("./.db/searches.yml", YAML.dump(@stat))
+      @stat[0][:requests_quantity]
     else
       @stat[match_index][:requests_quantity] += 1
       @stat[match_index][:total_qantity] = @results_car.size
-      File.open("./.db/searches.yml", 'w') { |f| YAML.dump(@stat, f) }
+      File.write("./.db/searches.yml", YAML.dump(@stat))
       @stat[match_index][:requests_quantity]
     end
   end
