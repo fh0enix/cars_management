@@ -1,32 +1,38 @@
+require 'i18n'
+
 class Preprocessing
   def initialize(user_data)
     @result_data = user_data
+    I18n.load_path += Dir[File.expand_path("locales") + "/*.yml"]
   end
 
   def call
-    puts 'Please select search rules.'
-    print 'Please choose make: '
+    print 'enter: <E> for English / введіть: <U> для Української'
+    I18n.locale = :ua if gets.strip.upcase == 'U'
+
+    puts I18n.t(:start)
+    print I18n.t(:make)
     @result_data[:make] = gets.strip.upcase
 
-    print 'Please choose model: '
+    print I18n.t(:model)
     @result_data[:model] = gets.strip.upcase
 
-    print 'Please choose year_from: '
+    print I18n.t(:year_from)
     @result_data[:year_from] = gets.to_i
 
-    print 'Please choose year_to: '
+    print I18n.t(:year_to)
     @result_data[:year_to] = gets.to_i
 
-    print 'Please choose price_from: '
+    print I18n.t(:price_from)
     @result_data[:price_from] = gets.to_i
 
-    print 'Please choose price_to: '
+    print I18n.t(:price_to)
     @result_data[:price_to] = gets.to_i
 
-    print 'Please choose sort option (date_added|price): '
+    print I18n.t(:sort_option)
     @result_data[:sort_option] = gets.strip.downcase
 
-    print 'Please choose sort direction(desc|asc): '
+    print I18n.t(:sort_direction)
     @result_data[:sort_direction] = gets.strip.downcase
 
     @result_data

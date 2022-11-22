@@ -1,4 +1,5 @@
 require_relative 'statistic'
+require 'i18n'
 
 class Printer
   def initialize(results_car, user_data, stat)
@@ -9,7 +10,7 @@ class Printer
 
   def results
     puts '----------------------------------'
-    puts 'Results:'
+    puts I18n.t(:results)
     @results_car.each do |car|
       car.each do |attribute_name, attribute_value|
         puts "#{attribute_name}: #{attribute_value}"
@@ -20,8 +21,8 @@ class Printer
 
   def stat
     puts '----------------------------------'
-    puts 'Statistic:'
-    puts "Total Quantity: #{@user_data[:total_qantity]}"
-    puts "Requests quantity: #{Statistic.new(@user_data, @results_car, @stat).call}"
+    puts I18n.t(:statistic)
+    puts "#{I18n.t(:total_quantity)} #{@user_data[:total_qantity]}"
+    puts "#{I18n.t(:requests_quantity)} #{Statistic.new(@user_data, @results_car, @stat).call}"
   end
 end
