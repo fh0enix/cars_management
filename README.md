@@ -3,7 +3,7 @@ How to install and run project?
 Firs of all you need to:
 
 1. Download progect
-   command:  git clone <repository URL>
+   command: git clone <repository URL>
 
 2. Enter in progect folder
    command: cd <progect folder>
