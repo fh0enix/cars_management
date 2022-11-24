@@ -7,7 +7,7 @@ class Preprocessing
   end
 
   def call
-    print 'enter: <E> for English / введіть: <U> для Української'
+    print 'enter: <E> for English / введіть: <U> для Української: '
     I18n.locale = :ua if gets.strip.upcase == 'U'
 
     puts I18n.t(:start)
