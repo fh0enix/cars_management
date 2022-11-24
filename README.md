@@ -1,17 +1,29 @@
-How to install and run project?
+# How to install and run project?
 
-Firs of all you need to:
+## Firs of all you need to:
 
-1. Download progect
-   command: git clone <repository URL>
+### 1. Download progect
 
-2. Enter in progect folder
-   command: cd <progect folder>
+```bash
+git clone https://github.com/fh0enix/cars_management
+```
 
-3. Run gem Bundler  in terminal
-   command: bundler install
+### 2. Enter in progect folder
 
-4. Run my app in terminal
-   command: ruby index.rb
+```bash
+cd <progect folder>
+```
 
-5. Enjoy)
+### 3. Run gem Bundler  in terminal
+
+```bash
+bundler install
+```
+
+### 4. Run my app in terminal
+
+```bash
+ ruby index.rb
+```
+
+## 5. Enjoy)
