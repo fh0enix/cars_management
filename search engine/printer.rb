@@ -11,19 +11,24 @@ class Printer
   end
 
   def call
-    stat = Terminal::Table.new do |t|
-      t.style = { alignment: :center, width: 60, border_x: '=', border_i: 'x' }
-      t.title = I18n.t(:statistic).colorize(:green)
-      t << [I18n.t(:total_quantity), @user_data[:total_qantity]]
-      t << [I18n.t(:requests_quantity), Statistic.new(@user_data, @results_car, @stat).call]
-    end
-
     table = Terminal::Table.new do |t|
-      t.style = { border_x: '=', border_i: 'x' }
-      t.title = I18n.t(:results).colorize(:green)
-      @results_car.each { |car| car.each { |row| t << row } }
+      t.style = { border_x: '='.colorize(:color => :light_blue, :background => :green),
+                  border_i: 'x'.colorize(:color => :light_blue, :background => :green),
+                  border_y: '|'.colorize(:color => :light_blue, :background => :green),
+                  border_bottom: false}
+      t.title = I18n.t(:results).blue.on_red
+
+      t.headings = [
+        [I18n.t(:total_quantity).blue.on_red,
+        @user_data[:total_qantity].to_s.blue.on_red],
+        [I18n.t(:requests_quantity).blue.on_red,
+        Statistic.new(@user_data, @results_car, @stat).call.to_s.blue.on_red]
+      ]
+      @results_car.each do |car|
+        car.each { |row| t << row }
+        t.add_separator
+      end
     end
-    puts stat
     puts table
   end
 end
