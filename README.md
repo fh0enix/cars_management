@@ -1,6 +1,6 @@
 # How to install and run project?
 
-## Firs of all you need to:
+## 🟠 Firs of all you need to:
 
 ### 1. Download progect
 
