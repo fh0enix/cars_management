@@ -7,10 +7,11 @@ class Preprocessing
   end
 
   def call
-    print 'enter: <E> for English / введіть: <U> для Української: '
+    print I18n.t(:select_lang, locale: :en) +' / ' + I18n.t(:select_lang, locale: :ua)
     I18n.locale = :ua if gets.strip.upcase == 'U'
 
     puts I18n.t(:start)
+
     print I18n.t(:make)
     @result_data[:make] = gets.strip.upcase
 
@@ -30,10 +31,10 @@ class Preprocessing
     @result_data[:price_to] = gets.to_i
 
     print I18n.t(:sort_option)
-    @result_data[:sort_option] = gets.strip.downcase
+    @result_data[:sort_option] = gets.to_i
 
     print I18n.t(:sort_direction)
-    @result_data[:sort_direction] = gets.strip.downcase
+    @result_data[:sort_direction] = gets.to_i
 
     @result_data
   end

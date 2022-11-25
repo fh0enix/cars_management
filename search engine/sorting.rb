@@ -5,12 +5,12 @@ class Sorting
   end
 
   def call
-    if @user_data[:sort_option] == 'price'
+    if @user_data[:sort_option] == 1
       @results_car.sort_by!{ |k| k[:price]}
     else
       @results_car.sort_by!{ |k| k[:date_added]}
     end
 
-    @results_car.reverse! if @user_data[:sort_direction] == 'asc'
+    @results_car.reverse! if @user_data[:sort_direction] == 1
   end
 end
