@@ -24,6 +24,6 @@ en:
   price_to: >-
     Please choose price to:
   sort_option: >-
-    Please choose sort option (enter 0 for date added|enter 1 for price):
+    Please choose sort option (enter%{key0}for date added|enter%{key1}for price):
   sort_direction: >-
-    Please choose sort direction(enter 0 for desc|enter 1 for asc):
+    Please choose sort direction (enter%{key0}for desc|enter%{key1}for asc):
