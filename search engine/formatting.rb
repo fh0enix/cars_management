@@ -7,9 +7,6 @@ class Formatting
   end
 
   def call
-    @result_data[:sort_direction] = 'desc' if @result_data[:sort_direction] != 'asc'
-    @result_data[:sort_option] = 'date_added' if @result_data[:sort_option] != 'price'
-
     @data.each do |car|
       @make << car[:make].upcase
       @model << car[:model].upcase
