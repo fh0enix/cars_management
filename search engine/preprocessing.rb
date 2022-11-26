@@ -1,6 +1,7 @@
 require 'colorize'
 
 class Preprocessing
+  ANSWER_OPTION = [" 0 ", " 1 "]
   def initialize(user_data)
     @result_data = user_data
     I18n.load_path += Dir[File.expand_path("locales") + "/*.yml"]
@@ -31,10 +32,12 @@ class Preprocessing
     print I18n.t(:price_to)
     @result_data[:price_to] = gets.to_i
 
-    print I18n.t(:sort_option, key0: ' 0 '.yellow.on_red, key1: ' 1 '.yellow.on_blue)
+    print I18n.t(:sort_option, key0: ANSWER_OPTION[0].yellow.on_red,
+                               key1: ANSWER_OPTION[1].yellow.on_blue)
     @result_data[:sort_option] = gets.to_i
 
-    print I18n.t(:sort_direction, key0: ' 0 '.yellow.on_red, key1: ' 1 '.yellow.on_blue)
+    print I18n.t(:sort_direction, key0: ANSWER_OPTION[0].yellow.on_red,
+                                  key1: ANSWER_OPTION[1].yellow.on_blue)
     @result_data[:sort_direction] = gets.to_i
 
     @result_data
