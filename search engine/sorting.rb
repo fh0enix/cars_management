@@ -12,7 +12,6 @@ class Sorting
     else
       @results_car.sort_by! { |k| k[:date_added] }
     end
-
     @results_car.reverse! if @user_data[:sort_direction] == SORT_ASC_OPTION
   end
 end
