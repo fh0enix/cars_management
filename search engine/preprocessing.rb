@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'colorize'
 
 class Preprocessing
   ANSWER_OPTION = [' 0 ', ' 1 '].freeze
-  LANG_OPTION = '<ENG>'.freeze
+  LANG_OPTION = '<ENG>'
   def initialize(user_data)
     @result_data = user_data
-    I18n.load_path += Dir[File.expand_path('locales') + '/*.yml']
+    I18n.load_path += Dir["#{File.expand_path('locales')}/*.yml"]
   end
 
   def call

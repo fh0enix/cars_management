@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Formatting
   def initialize(data, user_data)
     @data = data

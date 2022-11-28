@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Sorting
   SORT_BY_PRICE_OPTION = 1
   SORT_ASC_OPTION = 1

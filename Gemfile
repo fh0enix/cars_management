@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'brakeman'
 gem 'bundler-audit'
 gem 'bundler-leak'
 gem 'colorize'
 gem 'i18n'
 gem 'lefthook'
-gem 'rubocop', require: false
+gem 'rubocop'
 gem 'rubocop-md'
-gem 'rubocop-performance', require: false
+gem 'rubocop-performance'
 gem 'rubocop-rake'
 gem 'terminal-table'
