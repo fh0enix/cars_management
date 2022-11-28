@@ -13,13 +13,13 @@ Lint/MissingSuper:
 # Style -----------------------------------------------------------------------
 
 Style/Documentation:
-  Enabled: false
+  Enabled: enable
 
 Style/ParallelAssignment:
-  Enabled: false
+  Enabled: enable
 
 Style/RegexpLiteral:
-  Enabled: false
+  Enabled: enable
 
 # Layout ----------------------------------------------------------------------
 

@@ -2,7 +2,4 @@ code_quality_control:
             commands:
              rubocop:
                  run: rubocop
-          gems-audit:
-                tags: backend security
-                run: bundler
-                -audit
+
