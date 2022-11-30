@@ -1,5 +1,9 @@
 code_quality_control:
-            commands:
-             rubocop:
-                 run: rubocop
-
+ parallel: true
+ commands:
+    rubocop:
+        run: bundle exec rubocop
+    bundler_leak:
+        run: bundle exec bundle-leak
+    bundler_audit:
+        run: bundle exec bundler-audit

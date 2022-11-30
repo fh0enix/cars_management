@@ -17,21 +17,23 @@ class Printer
     @stat = stat
   end
 
+  def table_heading
+    [[I18n.t(:total_quantity).blue.on_red,
+      @user_data[:total_qantity].to_s.blue.on_red],
+     [I18n.t(:requests_quantity).blue.on_red,
+      Statistic.new(@user_data, @results_car, @stat).call.to_s.blue.on_red]]
+  end
+
   def call
-    table = Terminal::Table.new do |t|
-      t.style = TABLE_STYLES
-      t.title = I18n.t(:results).blue.on_red
-      t.headings = [
-        [I18n.t(:total_quantity).blue.on_red,
-         @user_data[:total_qantity].to_s.blue.on_red],
-        [I18n.t(:requests_quantity).blue.on_red,
-         Statistic.new(@user_data, @results_car, @stat).call.to_s.blue.on_red]
-      ]
+    @table = Terminal::Table.new do |t|
       @results_car.each do |car|
         car.each { |row| t << row }
         t.add_separator
       end
+      t.title = I18n.t(:results).blue.on_red
+      t.headings = table_heading
+      t.style = TABLE_STYLES
     end
-    puts table
+    puts @table
   end
 end
