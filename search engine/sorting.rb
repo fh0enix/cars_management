@@ -3,6 +3,7 @@
 class Sorting
   SORT_BY_PRICE_OPTION = 1
   SORT_ASC_OPTION = 1
+
   def initialize(user_data, results_car)
     @user_data = user_data
     @results_car = results_car

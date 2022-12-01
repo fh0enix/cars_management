@@ -9,30 +9,6 @@ class Statistic
     @user_data = user_data
   end
 
-  def check_db
-    if File.exist?('./.db/searches.yml')
-      @stat = YAML.load_file('./.db/searches.yml')
-    else
-      File.new('./.db/searches.yml', 'w')
-    end
-  end
-
-  def create_new_stat
-    save_search = @user_data.slice(*SEARCH_FIELDS)
-    save_search[:requests_quantity] = 1
-    save_search[:total_qantity] = @results_car.size
-    @stat.push(save_search)
-    File.write('./.db/searches.yml', YAML.dump(@stat))
-    @stat[0][:requests_quantity]
-  end
-
-  def update_stat(match_index)
-    @stat[match_index][:requests_quantity] += 1
-    @stat[match_index][:total_qantity] = @results_car.size
-    File.write('./.db/searches.yml', YAML.dump(@stat))
-    @stat[match_index][:requests_quantity]
-  end
-
   def call
     check_db
     match_index = @stat.index { |stat_req| @user_data.slice(*SEARCH_FIELDS) == stat_req.slice(*SEARCH_FIELDS) }
@@ -42,4 +18,30 @@ class Statistic
       update_stat(match_index)
     end
   end
+
+  private
+
+    def check_db
+      if File.exist?('./.db/searches.yml')
+        @stat = YAML.load_file('./.db/searches.yml')
+      else
+        File.new('./.db/searches.yml', 'w')
+      end
+    end
+
+    def create_new_stat
+      save_search = @user_data.slice(*SEARCH_FIELDS)
+      save_search[:requests_quantity] = 1
+      save_search[:total_qantity] = @results_car.size
+      @stat.push(save_search)
+      File.write('./.db/searches.yml', YAML.dump(@stat))
+      @stat[0][:requests_quantity]
+    end
+
+    def update_stat(match_index)
+      @stat[match_index][:requests_quantity] += 1
+      @stat[match_index][:total_qantity] = @results_car.size
+      File.write('./.db/searches.yml', YAML.dump(@stat))
+      @stat[match_index][:requests_quantity]
+    end
 end
