@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative '../locales/i18n'
 require 'colorize'
 
 class Preprocessing
@@ -8,7 +9,6 @@ class Preprocessing
 
   def initialize(user_data)
     @result_data = user_data
-    I18n.load_path += Dir["#{File.expand_path('locales')}/*.yml"]
   end
 
   def start
