@@ -15,29 +15,29 @@ class ResultCar
 
   private
 
-    def check_make
-      '@user_data[:make] == car[:make].upcase || @user_data[:make].nil?'
-    end
+  def check_make
+    '@user_data[:make] == car[:make].upcase || @user_data[:make].nil?'
+  end
 
-    def check_model
-      '@user_data[:model] == car[:model].upcase || @user_data[:model].nil?'
-    end
+  def check_model
+    '@user_data[:model] == car[:model].upcase || @user_data[:model].nil?'
+  end
 
-    def check_year
-      '(car[:year].between?(@user_data[:year_from], @user_data[:year_to]) ||
+  def check_year
+    '(car[:year].between?(@user_data[:year_from], @user_data[:year_to]) ||
       (@user_data[:year_to].zero? && car[:year] >= @user_data[:year_from]))'
-    end
+  end
 
-    def check_price
-      '(car[:price].between?(@user_data[:price_from], @user_data[:price_to]) ||
+  def check_price
+    '(car[:price].between?(@user_data[:price_from], @user_data[:price_to]) ||
       (@user_data[:price_to].zero? && car[:price] >= @user_data[:price_from]))'
-    end
+  end
 
-    def make_results_car
-      @data.each do |car|
-        next unless check_make && check_model && check_year && check_price
+  def make_results_car
+    @data.each do |car|
+      next unless check_make && check_model && check_year && check_price
 
-        @results_car.push(car)
-      end
+      @results_car.push(car)
     end
+  end
 end
