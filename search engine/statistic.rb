@@ -2,6 +2,7 @@
 
 class Statistic
   SEARCH_FIELDS = %i[make model year_from year_to price_from price_to].freeze
+
   def initialize(user_data, results_car, stat)
     @stat = stat
     @results_car = results_car
