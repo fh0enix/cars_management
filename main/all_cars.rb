@@ -4,7 +4,7 @@ require 'yaml'
 
 class AllCars < Printer
   def initialize
-    @results_car = @data = YAML.safe_load_file('./.db/db.yml', symbolize_names: true)
+    @results_car = SearchEngine::CAR_DB
   end
 
   private
