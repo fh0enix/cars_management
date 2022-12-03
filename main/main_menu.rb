@@ -11,7 +11,7 @@ class MainMenu
     greeting
 
     loop do
-      chose_menu
+      choice_menu
       case_choice
     end
   end
@@ -35,7 +35,7 @@ class MainMenu
     I18n.locale = :ua if gets.strip.casecmp('U').zero?
   end
 
-  def chose_menu
+  def choice_menu
     puts I18n.t(:helper).green
     puts I18n.t(:search_car)
     puts I18n.t(:show_all_cars)
