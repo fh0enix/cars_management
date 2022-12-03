@@ -7,35 +7,35 @@ require_relative 'all_cars'
 
 class MainMenu
   def run
-    lang_choice
-    greeting
+    choose_language
+    greet
 
     loop do
-      choice_menu
-      case_choice
+      show_menu
+      choose_menu_item
     end
   end
 
   private
 
-  def case_choice
+  def choose_menu_item
     case gets.to_i
     when 1 then SearchEngine.new.run
     when 2 then AllCars.new.call
     when 3 then puts I18n.t(:help_txt)
-    when 4 then go_exit
+    when 4 then exit
     else puts I18n.t(:error).white.on_red
     end
   end
 
-  def lang_choice
+  def choose_language
     I18n.load_path += Dir["#{File.expand_path('locales')}/*.yml"]
     puts I18n.t(:select_lang, locale: :en).white.on_red +
          I18n.t(:select_lang, locale: :ua).white.on_blue
     I18n.locale = :ua if gets.strip.casecmp('U').zero?
   end
 
-  def choice_menu
+  def show_menu
     puts I18n.t(:helper).green
     puts I18n.t(:search_car)
     puts I18n.t(:show_all_cars)
@@ -43,17 +43,7 @@ class MainMenu
     puts I18n.t(:exit)
   end
 
-  def go_exit
-    print I18n.t(:bye)
-    33.times do
-      sleep 0.05
-      print '.'
-    end
-    puts
-    exit
-  end
-
-  def greeting
+  def greet
     puts I18n.t(:greeting)
   end
 end
