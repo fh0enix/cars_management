@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-require_relative './search engine/search_engine'
+require_relative './main/main_menu'
 
-SearchEngine.new.run
+MainMenu.new.run

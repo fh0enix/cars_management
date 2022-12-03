@@ -1,5 +1,7 @@
 en:
   select_lang: enter <E> for English
+  all: All
+  cars: Cars
   results: Results
   statistic: Statistic
   total_quantity: Total Quantity
@@ -13,3 +15,38 @@ en:
   price_to:  Please choose price to
   sort_option: Please choose sort option (enter%{key0}for date added|enter%{key1}for price)
   sort_direction: Please choose sort direction (enter%{key0}for desc|enter%{key1}for asc)
+  error: ERROR!!! Wrong answer!!! Type correct number!!!
+  bye: Bye)
+  help: (3)Help
+  search_car: (1)Search a car
+  show_all_cars: (2)Show all cars
+  exit: (4)Exit
+  helper: enter from 1 to 4
+  greeting:
+            - Hi there!
+            - My name is Oleksandr Lutsyuk
+            - and I am very happy to welcome you on board with Car Choice!
+            - You joined thousands of user’s
+            - who are already skyrocketing their sales or buyes with Car Choice.
+            - There’s just one more tiny step you need to take
+            - to achieve all these amazing things! )
+            -
+  help_txt:
+            - The app have the ability to search by rules
+            - Searching rules - make, model, year from, year to, price from, price to.
+            - Rules be combined with logical AND.
+            - Each rule be asked in the console.
+            - If the user wants to skip the search rule, he enters an empty line.
+            - The app have the ability to apply sorting for search results.
+            - Sort option be asked in the console.
+            - Sort options - price, date added.
+            - Sort directions - asc, desc.
+            - If the user wants to skip the sort option or direction he enters an empty line.
+            - The default sort option is date added
+            - The default sort direction is desc.
+            - If user passed unexpected value – it be similar to the behavior
+            - when user passed nothing.
+            - The app have the ability to show the next statistics for each search
+            - Total quantity – quantity of found cars.
+            - Requests quantity - number of searches with the same rules as current.
+            -
