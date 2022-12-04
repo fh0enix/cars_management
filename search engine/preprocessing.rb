@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../locales/i18n'
+require 'i18n'
 require 'colorize'
 
 class Preprocessing
@@ -12,7 +12,7 @@ class Preprocessing
   end
 
   def call
-    start
+    puts I18n.t(:start).green
     make_model
     year
     price
@@ -22,13 +22,6 @@ class Preprocessing
   end
 
   private
-
-  def start
-    puts I18n.t(:select_lang, locale: :en).yellow.on_red +
-         I18n.t(:select_lang, locale: :ua).yellow.on_blue
-    I18n.locale = :ua if gets.strip.casecmp('U').zero?
-    puts I18n.t(:start)
-  end
 
   def make_model
     puts I18n.t(:make, key: LANG_OPTION.yellow.on_red)
