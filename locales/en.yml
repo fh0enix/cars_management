@@ -16,12 +16,13 @@ en:
   sort_option: Please choose sort option (enter%{key0}for date added|enter%{key1}for price)
   sort_direction: Please choose sort direction (enter%{key0}for desc|enter%{key1}for asc)
   error: ERROR!!! Wrong answer!!! Type correct number!!!
-  bye: Bye)
   help: (3)Help
   search_car: (1)Search a car
   show_all_cars: (2)Show all cars
-  exit: (4)Exit
-  helper: enter from 1 to 4
+  log_in: (4)Log in
+  sign_up: (5)Sign up
+  exit: (6)Exit
+  helper: enter from 1 to 6
   greeting:
   - Hi there!
   - My name is Oleksandr Lutsyuk
