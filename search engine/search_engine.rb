@@ -9,10 +9,10 @@ require_relative 'result_car'
 require_relative 'statistic'
 
 class SearchEngine
-  PATH_TO_DB = './.db/db.yml'
+  DB_PATH = './.db/db.yml'
 
   def initialize
-    @data = YAML.safe_load_file(PATH_TO_DB, symbolize_names: true)
+    @data = YAML.safe_load_file(DB_PATH, symbolize_names: true)
     @user_data = {}
     @results_car = []
     @stat = []
