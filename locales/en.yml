@@ -23,6 +23,12 @@ en:
   sign_up: (5)Sign up
   exit: (6)Exit
   helper: enter from 1 to 6
+  get_email: email of new user
+  get_password: password of new user
+  email_exsist: email already exists
+  invalid_email: user entered invalid email
+  invalid_password: user entered invalid password
+  hello_user: Hello,
   greeting:
   - Hi there!
   - My name is Oleksandr Lutsyuk

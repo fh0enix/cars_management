@@ -1,0 +1,99 @@
+Основи Ruby – Логіка автентифікації/реєстрації
+Дано: нам потрібно додати логіку автентифікації та реєстрації
+Правила бізнесу:
+• Як користувач я хочу бачити 2 нових пункти в головному меню – Увійти та Реєстрація
+• Якщо користувач вибирає опцію «Увійти», він повинен ввести електронну адресу та пароль існуючої
+користувача.
+o Якщо користувач існує – він повинен побачити повідомлення – Привіт, EMAIL! і побачити
+головне меню одразу після цього. Крім того, нам потрібно додати кнопку Вийти до нашого
+меню для користувача, який пройшов вхід.
+o Якщо користувача не існує – він повинен побачити повідомлення про помилку та побачити основне
+меню відразу після цього
+• Якщо користувач вибрав опцію «Зареєструватися» - він повинен ввести електронну пошту та пароль нового користувача.
+o Якщо користувач ввів недійсну електронну пошту - він повинен побачити повідомлення про помилку та переглянути
+головне меню відразу після цього (див. Перевірки)
+o Якщо користувач ввів недійсний пароль - він повинен побачити повідомлення про помилку та
+перегляньте головне меню відразу після цього (див. Перевірки)
+o Якщо користувач із такою електронною адресою вже існує – він має побачити повідомлення про помилку
+і відразу після цього перегляньте головне меню (див. Перевірки)
+o Якщо параметри користувача мають значення – система повинна зберігати користувача в базі даних і в
+користувач повинен побачити повідомлення «Привіт, EMAIL!» і перегляньте головне меню
+відразу після цього
+o Якщо користувач вибирає розділ «Вийти» – він повинен вийти з системи, він повинен побачити
+«До зустрічі пізніше, повідомлення!» і побачите головне меню відразу після цього
+Технічні деталі:
+• Створіть нову гілку з назвою feature/task-6-add-authentication-logic
+з головної гілки (якщо всі попередні завдання злиті в основну. Якщо ні – ваша остання
+гілка повинна бути вашою базовою гілкою для feature/task-6-add-authentication-
+логіка) вашого існуючого сховища.
+• База даних для користувачів повинна мати назву «users.yml»
+• Паролі в базі даних повинні бути зашифровані (використовуйте bcrypt)
+• Впровадити функціональні можливості всередині бізнес-правил
+• Переконайтеся, що всі перевірки якості коду пройшли
+• Створіть запит на отримання від вашої гілки до її базової гілки
+• Додайте 2 ваших товаришів по команді до репо як учасників
+• Додайте цих товаришів по команді до свого PR як рецензентів
+• Додайте себе як правонаступника
+• Отримайте 2 перевірки коду та 2 схвалення від них
+• Додайте посилання PR до коментаря до завдання на elearn.epam.com• Запросіть рецензію у будь-якого зі своїх наставників
+Очікуваний результат: PR створено
+Перевірки:
+• Електронна пошта
+o Повинен мати формат електронної пошти
+o Повинен мати принаймні 5 символів перед @
+o має бути унікальним
+• Пароль
+o Має бути принаймні 1 велика літера
+o Повинен мати принаймні 2 спеціальні символи
+o Має бути щонайменше 8 символів
+o Має бути не більше 20 символів
+
+Ruby basics – Authentication / Registration logic
+Given: We need to add the authentication and registration logic
+Business rules:
+• As a user I want to see 2 new items in main menu – Log in and Sign up
+• If user choose “Log in” option - he should enter email and password of existing
+user.
+o If user exists – he should see the message – Hello, EMAIL! and see the
+main menu right after that. Also, we need to add Log Out button to our
+menu for user who passed a sign in.
+o If user doesn’t exist – he should see the error message and see the main
+menu right after that
+• If user choose “Sign up” option - he should enter email and password of new user.
+o If user entered invalid email - he should see the error message and see
+the main menu right after that (see Validations)
+o If user entered invalid password - he should see the error message and
+see the main menu right after that (see Validations)
+o If user with such email already exists – - he should see the error message
+and see the main menu right after that (see Validations)
+o If user params are value – the system should store user to db and the
+user should see the message “Hello, EMAIL!” and see the main menu
+right after that
+o If user choose ‘Log Out’ section – he should be logged out, he should see
+“See you later, message!” and see the main menu right after that
+Technical details:
+• Create the new branch with name feature/task-6-add-authentication-logic
+from main branch (if all previous tasks merged to main. If not – your last
+branch should be your base branch for feature/task-6-add-authentication-
+logic) of your existing repository.
+• Database for users should have name ‘users.yml’
+• Passwords in database should be encrypted (use bcrypt)
+• Implement the functionality inside business rules
+• Check that all code quality gates are passing
+• Create the Pull Request from your branch to its base branch
+• Add 2 of your teammates to the repo as a contributors
+• Add these teammates to your PR as a reviewers
+• Add yourself as an assignee
+• Receive 2 code reviews and 2 approves from them
+• Add the link of PR to the comment of the task on elearn.epam.com• Request the review from any of your mentors
+Expected result: PR created
+Validations:
+• Email
+o Should have email-type format
+o Should have at least 5 symbols before @
+o Should be unique
+• Password
+o Should have at least 1 capital letter
+o Should have at least 2 special characters
+o Should be at least 8 symbols
+o Should be no more than 20 symbols

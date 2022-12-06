@@ -4,6 +4,7 @@ require 'colorize'
 require 'i18n'
 require_relative '../search engine/search_engine'
 require_relative 'all_cars'
+require_relative '../user/sign_up'
 
 class MainMenu
   def run

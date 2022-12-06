@@ -9,7 +9,7 @@ require_relative 'result_car'
 require_relative 'statistic'
 
 class SearchEngine
-  DB_PATH = './.db/db.yml'
+  DB_PATH = '../.db/db.yml'
 
   def initialize
     @data = YAML.safe_load_file(DB_PATH, symbolize_names: true)
