@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class UserMenu
-  def initialize(user_auth)
-    @user_auth = user_auth
+  def initialize
     @user_log_in = true
   end
 
@@ -34,7 +33,7 @@ class UserMenu
   end
 
   def log_out
-    puts I18n.t(:see_you_later).white.on_green
+    puts I18n.t(:see_you_later).white.on_blue
     @user_log_in = false
   end
 end

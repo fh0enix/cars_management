@@ -21,7 +21,7 @@ class SignUp
     enter_password
     @user_data[:email] = nil unless valid_email?(@user_data[:email])
     valid_password?(@user_data[:password]) ? crypt_password : @user_data[:password] = nil
-    user_data_is_valid ? add_user_to_db : show_error
+    user_data_is_valid ? show_user_menu : show_error
   end
 
   private
@@ -71,11 +71,14 @@ class SignUp
   def add_user_to_db
     @users_db.push(@user_data)
     File.write(USERS_DB_PATH, YAML.dump(@users_db))
+  end
 
+  def show_user_menu
+    add_user_to_db
     puts I18n.t(:hello_user).red.on_white +
-         @user_data[:email].black.on_white.upcase
+         @user_data[:email].upcase.black.on_white
 
-    UserMenu.new(@user_data).run
+    UserMenu.new.run
   end
 
   def email_exsist
@@ -84,8 +87,8 @@ class SignUp
       next unless user[:email] == @user_data[:email]
 
       @user_data[:email] = nil
-      @exsist = true
+      @email_exsist = true
     end
-    @exsist
+    @email_exsist
   end
 end

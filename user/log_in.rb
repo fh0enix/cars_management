@@ -4,7 +4,7 @@ class LogIn < SignUp
   def call
     enter_email
     enter_password
-    user_data_is_valid? ? show_user_menu : show_error
+    user_data_is_valid ? show_user_menu : show_error
   end
 
   private
@@ -27,10 +27,10 @@ class LogIn < SignUp
     puts I18n.t(:hello_user).red.on_white +
          @user_data[:email].upcase.black.on_white
 
-    UserMenu.new(@user_data).run
+    UserMenu.new.run
   end
 
-  def user_data_is_valid?
+  def user_data_is_valid
     check_db
     valid = false
     @users_db.each do |user|
