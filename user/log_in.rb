@@ -15,5 +15,3 @@ def a
   end
   t
 end
-
-p a

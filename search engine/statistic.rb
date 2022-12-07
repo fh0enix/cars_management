@@ -2,7 +2,7 @@
 
 class Statistic
   SEARCH_FIELDS = %i[make model year_from year_to price_from price_to].freeze
-  SEARCH_DB_PATH = '../.db/searches.yml'
+  SEARCH_DB_PATH = './.db/searches.yml'
   def initialize(user_data, results_car, stat)
     @stat = stat
     @results_car = results_car

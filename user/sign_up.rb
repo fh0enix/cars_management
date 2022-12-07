@@ -3,6 +3,7 @@
 require 'yaml'
 require 'bcrypt'
 require 'colorize'
+require_relative 'user_menu'
 
 class SignUp
   VALID_EMAIL = /^\w+([.-]?\w+){4,}@\w+([.-]?\w+)*(\.\w{2,})+$/
@@ -21,7 +22,6 @@ class SignUp
     valid_password?(@user_auth[:password]) ? crypt_password : @user_auth[:password] = nil
     check_errors
     add_user_to_db if user_data_is_valid?
-    # UserMenu.new(@user_auth)
   end
 
   private
@@ -70,8 +70,10 @@ class SignUp
     @users_db.push(@user_auth)
     File.write(USERS_DB_PATH, YAML.dump(@users_db))
 
-    puts I18n.t(:hello_user) +
+    puts I18n.t(:hello_user).red.on_white +
          @user_auth[:email].upcase.black.on_white
+
+    UserMenu.new(@user_auth).run
   end
 
   def email_exsist

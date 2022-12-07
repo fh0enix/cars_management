@@ -22,7 +22,10 @@ en:
   log_in: (4)Log in
   sign_up: (5)Sign up
   exit: (6)Exit
+  see_you_later: See you later!
+  user_exit: (4)Exit
   helper: enter from 1 to 6
+  user_helper: enter from 1 to 4
   get_email: email of new user
   get_password: password of new user
   email_exsist: email already exists
@@ -56,4 +59,15 @@ en:
   - The app have the ability to show the next statistics for each search
   - Total quantity – quantity of found cars.
   - Requests quantity - number of searches with the same rules as current.
+  -
+  - Registration-
+  - • Email
+  - o Should have email-type format
+  - o Should have at least 5 symbols before @
+  - o Should be unique
+  - • Password
+  - o Should have at least 1 capital letter
+  - o Should have at least 2 special characters
+  - o Should be at least 8 symbols
+  - o Should be no more than 20 symbols
   -
