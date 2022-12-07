@@ -21,7 +21,7 @@ class SignUp
     enter_password
     @user_data[:email] = nil unless valid_email?(@user_data[:email])
     valid_password?(@user_data[:password]) ? crypt_password : @user_data[:password] = nil
-    user_data_is_valid? ? add_user_to_db : show_error
+    user_data_is_valid ? add_user_to_db : show_error
   end
 
   private
@@ -47,16 +47,15 @@ class SignUp
   def show_error
     puts I18n.t(:invalid_email).red if @user_data[:email].nil?
     puts I18n.t(:invalid_password).red if @user_data[:password].nil?
-    puts I18n.t(:email_exsist).red if email_exsist
+    puts I18n.t(:email_exsist).red if @email_exsist
   end
 
-  def user_data_is_valid?
-    if !@user_data[:email].nil? ||
-       !@user_data[:password].nil? ||
-       !email_exsist
-
-    end
+  def user_data_is_valid
+    !@user_data[:email].nil? &&
+      !@user_data[:password].nil? &&
+      !email_exsist
   end
+
   def crypt_password
     @user_data[:password] = BCrypt::Password.create(@user_data[:password]).to_s
   end
@@ -74,7 +73,7 @@ class SignUp
     File.write(USERS_DB_PATH, YAML.dump(@users_db))
 
     puts I18n.t(:hello_user).red.on_white +
-         @user_data[:email].upcase.black.on_white
+         @user_data[:email].black.on_white.upcase
 
     UserMenu.new(@user_data).run
   end

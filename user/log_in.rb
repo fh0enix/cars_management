@@ -15,7 +15,7 @@ class LogIn < SignUp
 
   def enter_email
     puts I18n.t(:email_log_in)
-    @user_data[:email] = gets.strip.to_s.downcaseS
+    @user_data[:email] = gets.strip.to_s.downcase
   end
 
   def enter_password
