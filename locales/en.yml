@@ -22,6 +22,7 @@ en:
   log_in: (4)Log in
   sign_up: (5)Sign up
   exit: (6)Exit
+  user_exit: (5)Exit
   see_you_later: See you later!
   user_log_out: (4)Log Out
   helper: enter from 1 to 6

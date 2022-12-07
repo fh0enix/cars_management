@@ -20,6 +20,7 @@ class UserMenu
     puts I18n.t(:show_all_cars)
     puts I18n.t(:help)
     puts I18n.t(:user_log_out)
+    puts I18n.t(:user_exit)
   end
 
   def choose_menu_item
@@ -28,6 +29,7 @@ class UserMenu
     when 2 then AllCars.new.call
     when 3 then puts I18n.t(:help_txt)
     when 4 then log_out
+    when 5 then exit
     else puts I18n.t(:error).white.on_red
     end
   end

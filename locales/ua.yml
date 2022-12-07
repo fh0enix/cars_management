@@ -22,6 +22,7 @@ ua:
   log_in: (4)Увійти
   sign_up: (5)Реєстрація
   exit: (6)Вихід
+  user_exit: (5)Вихід
   see_you_later: До зустрічі пізніше!
   user_log_out: (4)Вийти
   helper: введіть від 1 до 6
