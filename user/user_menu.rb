@@ -3,10 +3,11 @@
 class UserMenu
   def initialize(user_auth)
     @user_auth = user_auth
+    @user_log_in = true
   end
 
   def run
-    loop do
+    while @user_log_in do
       show_menu
       choose_menu_item
     end
@@ -25,8 +26,13 @@ class UserMenu
     when 1 then SearchEngine.new.run
     when 2 then AllCars.new.call
     when 3 then puts I18n.t(:help_txt)
-    when 4 then puts I18n.t(:see_you_later)
+    when 4 then log_out
     else puts I18n.t(:error).white.on_red
     end
+  end
+
+  def log_out
+    puts I18n.t(:see_you_later).white.on_green
+    @user_log_in = false
   end
 end
