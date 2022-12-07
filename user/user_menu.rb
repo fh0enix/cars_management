@@ -20,7 +20,7 @@ class UserMenu
     puts I18n.t(:search_car)
     puts I18n.t(:show_all_cars)
     puts I18n.t(:help)
-    puts I18n.t(:user_exit)
+    puts I18n.t(:user_log_out)
   end
 
   def choose_menu_item

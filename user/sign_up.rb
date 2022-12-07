@@ -13,6 +13,7 @@ class SignUp
   def initialize
     @users_db = []
     @user_data = { email: nil, password: nil }
+    @email_exsist = false
   end
 
   def call
@@ -20,15 +21,14 @@ class SignUp
     enter_password
     @user_data[:email] = nil unless valid_email?(@user_data[:email])
     valid_password?(@user_data[:password]) ? crypt_password : @user_data[:password] = nil
-    check_errors
-    add_user_to_db if user_data_is_valid?
+    user_data_is_valid? ? add_user_to_db : show_error
   end
 
   private
 
   def enter_email
     puts I18n.t(:get_email)
-    @user_data[:email] = gets.strip.to_s
+    @user_data[:email] = gets.strip.to_s.downcase
   end
 
   def enter_password
@@ -44,16 +44,19 @@ class SignUp
     email =~ VALID_EMAIL
   end
 
-  def check_errors
+  def show_error
     puts I18n.t(:invalid_email).red if @user_data[:email].nil?
     puts I18n.t(:invalid_password).red if @user_data[:password].nil?
     puts I18n.t(:email_exsist).red if email_exsist
   end
 
   def user_data_is_valid?
-    !@user_data[:email].nil? || !@user_data[:password].nil?
-  end
+    if !@user_data[:email].nil? ||
+       !@user_data[:password].nil? ||
+       !email_exsist
 
+    end
+  end
   def crypt_password
     @user_data[:password] = BCrypt::Password.create(@user_data[:password]).to_s
   end
@@ -78,13 +81,12 @@ class SignUp
 
   def email_exsist
     check_db
-    exsist = false
     @users_db.each do |user|
       next unless user[:email] == @user_data[:email]
 
       @user_data[:email] = nil
-      exsist = true
+      @exsist = true
     end
-    exsist
+    @exsist
   end
 end

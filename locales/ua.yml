@@ -23,7 +23,7 @@ ua:
   sign_up: (5)Реєстрація
   exit: (6)Вихід
   see_you_later: До зустрічі пізніше!
-   user_log_out: (4)Вийти
+  user_log_out: (4)Вийти
   helper: введіть від 1 до 6
   user_helper: введіть від 1 до 4
   get_email: електроннa поштa нового користувача
