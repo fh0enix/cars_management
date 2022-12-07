@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class LogIn < SignUp
-
   def call
     enter_email
     enter_password

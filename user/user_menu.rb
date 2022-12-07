@@ -7,7 +7,7 @@ class UserMenu
   end
 
   def run
-    while @user_log_in do
+    while @user_log_in
       show_menu
       choose_menu_item
     end
