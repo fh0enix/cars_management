@@ -13,6 +13,8 @@ class UserMenu
     end
   end
 
+  private
+
   def show_menu
     puts I18n.t(:user_helper).green
     puts I18n.t(:search_car)

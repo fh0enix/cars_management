@@ -27,11 +27,14 @@ en:
   helper: enter from 1 to 6
   user_helper: enter from 1 to 4
   get_email: email of new user
+  email_log_in: email of user
   get_password: password of new user
+  password_log_in: password of user
   email_exsist: email already exists
   invalid_email: user entered invalid email
   invalid_password: user entered invalid password
   hello_user: Hello,
+  user_error: error!!! Such user does not exist!!!
   greeting:
   - Hi there!
   - My name is Oleksandr Lutsyuk

@@ -12,14 +12,14 @@ class SignUp
 
   def initialize
     @users_db = []
-    @user_auth = { email: nil, password: nil }
+    @user_data = { email: nil, password: nil }
   end
 
   def call
     enter_email
     enter_password
-    @user_auth[:email] = nil unless valid_email?(@user_auth[:email])
-    valid_password?(@user_auth[:password]) ? crypt_password : @user_auth[:password] = nil
+    @user_data[:email] = nil unless valid_email?(@user_data[:email])
+    valid_password?(@user_data[:password]) ? crypt_password : @user_data[:password] = nil
     check_errors
     add_user_to_db if user_data_is_valid?
   end
@@ -28,12 +28,12 @@ class SignUp
 
   def enter_email
     puts I18n.t(:get_email)
-    @user_auth[:email] = gets.strip.to_s
+    @user_data[:email] = gets.strip.to_s
   end
 
   def enter_password
     puts I18n.t(:get_password)
-    @user_auth[:password] = gets.strip.to_s
+    @user_data[:password] = gets.strip.to_s
   end
 
   def valid_password?(password)
@@ -45,17 +45,17 @@ class SignUp
   end
 
   def check_errors
-    puts I18n.t(:invalid_email).red if @user_auth[:email].nil?
-    puts I18n.t(:invalid_password).red if @user_auth[:password].nil?
+    puts I18n.t(:invalid_email).red if @user_data[:email].nil?
+    puts I18n.t(:invalid_password).red if @user_data[:password].nil?
     puts I18n.t(:email_exsist).red if email_exsist
   end
 
   def user_data_is_valid?
-    !@user_auth[:email].nil? || !@user_auth[:password].nil?
+    !@user_data[:email].nil? || !@user_data[:password].nil?
   end
 
   def crypt_password
-    @user_auth[:password] = BCrypt::Password.create(@user_auth[:password]).to_s
+    @user_data[:password] = BCrypt::Password.create(@user_data[:password]).to_s
   end
 
   def check_db
@@ -67,22 +67,22 @@ class SignUp
   end
 
   def add_user_to_db
-    @users_db.push(@user_auth)
+    @users_db.push(@user_data)
     File.write(USERS_DB_PATH, YAML.dump(@users_db))
 
     puts I18n.t(:hello_user).red.on_white +
-         @user_auth[:email].upcase.black.on_white
+         @user_data[:email].upcase.black.on_white
 
-    UserMenu.new(@user_auth).run
+    UserMenu.new(@user_data).run
   end
 
   def email_exsist
     check_db
     exsist = false
     @users_db.each do |user|
-      next unless user[:email] == @user_auth[:email]
+      next unless user[:email] == @user_data[:email]
 
-      @user_auth[:email] = nil
+      @user_data[:email] = nil
       exsist = true
     end
     exsist
