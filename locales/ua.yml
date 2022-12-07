@@ -26,7 +26,7 @@ ua:
   see_you_later: До зустрічі пізніше!
   user_log_out: (4)Вийти
   helper: введіть від 1 до 6
-  user_helper: введіть від 1 до 4
+  user_helper: введіть від 1 до 5
   get_email: електроннa поштa нового користувача
   email_log_in: електроннa поштa користувача
   get_password: пароль нового користувача

@@ -26,7 +26,7 @@ en:
   see_you_later: See you later!
   user_log_out: (4)Log Out
   helper: enter from 1 to 6
-  user_helper: enter from 1 to 4
+  user_helper: enter from 1 to 5
   get_email: email of new user
   email_log_in: email of user
   get_password: password of new user
