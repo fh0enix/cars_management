@@ -28,12 +28,12 @@ class SignUp
 
   def enter_email
     puts I18n.t(:get_email)
-    @user_data[:email] = gets.strip.to_s.downcase
+    @user_data[:email] = gets.strip.downcase
   end
 
   def enter_password
     puts I18n.t(:get_password)
-    @user_data[:password] = gets.strip.to_s
+    @user_data[:password] = gets.strip
   end
 
   def valid_password?(password)
