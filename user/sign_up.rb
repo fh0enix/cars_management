@@ -7,7 +7,7 @@ require_relative 'user_menu'
 
 class SignUp
   VALID_EMAIL = /^\w+([.-]?\w+){4,}@\w+([.-]?\w+)*(\.\w{2,})+$/
-  VALID_PASS = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\^&*]{2,}).{8,20}$/
+  VALID_PASS = /^(?=.*[A-Z])(?=.*[!@#$%\^&*]{2,}).{8,20}$/
   USERS_DB_PATH = './.db/users.yml'
 
   def initialize
