@@ -7,7 +7,7 @@ require_relative 'user_menu'
 
 class SignUp
   VALID_EMAIL = /^\w+([.-]?\w+){4,}@\w+([.-]?\w+)*(\.\w{2,})+$/
-  VALID_PASS = /^(?=.*[A-Z])(?=.*[!@#$%\^&*]{2,}).{8,20}$/
+  VALID_PASS = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\^&*]{2,}).{8,20}$/
   USERS_DB_PATH = './.db/users.yml'
 
   def initialize
@@ -20,7 +20,7 @@ class SignUp
     enter_email
     enter_password
     @user_data[:email] = nil unless valid_email?(@user_data[:email])
-    valid_password?(@user_data[:password]) ? crypt_password : @user_data[:password] = nil
+    @user_data[:password] = valid_password? ? crypt_password : nil
     user_data_is_valid ? show_user_menu : show_error
   end
 
@@ -28,16 +28,16 @@ class SignUp
 
   def enter_email
     puts I18n.t(:get_email)
-    @user_data[:email] = gets.strip.downcase
+    @user_data[:email] = gets.strip.to_s.downcase
   end
 
   def enter_password
     puts I18n.t(:get_password)
-    @user_data[:password] = gets.strip
+    @user_data[:password] = gets.strip.to_s
   end
 
-  def valid_password?(password)
-    password =~ VALID_PASS
+  def valid_password?
+    @user_data[:password] =~ VALID_PASS
   end
 
   def valid_email?(email)
@@ -57,7 +57,7 @@ class SignUp
   end
 
   def crypt_password
-    @user_data[:password] = BCrypt::Password.create(@user_data[:password]).to_s
+    BCrypt::Password.create(@user_data[:password]).to_s
   end
 
   def check_db
