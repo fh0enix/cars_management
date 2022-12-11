@@ -4,6 +4,8 @@ require 'colorize'
 require 'i18n'
 require_relative '../search engine/search_engine'
 require_relative 'all_cars'
+require_relative '../user/sign_up'
+require_relative '../user/log_in'
 
 class MainMenu
   def run
@@ -23,8 +25,10 @@ class MainMenu
     when 1 then SearchEngine.new.run
     when 2 then AllCars.new.call
     when 3 then puts I18n.t(:help_txt)
-    when 4 then exit
-    else puts I18n.t(:error).white.on_red
+    when 4 then LogIn.new.call
+    when 5 then SignUp.new.call
+    when 6 then exit
+    else puts I18n.t(:error)
     end
   end
 
@@ -40,6 +44,8 @@ class MainMenu
     puts I18n.t(:search_car)
     puts I18n.t(:show_all_cars)
     puts I18n.t(:help)
+    puts I18n.t(:log_in)
+    puts I18n.t(:sign_up)
     puts I18n.t(:exit)
   end
 

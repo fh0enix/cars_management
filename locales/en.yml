@@ -16,12 +16,26 @@ en:
   sort_option: Please choose sort option (enter%{key0}for date added|enter%{key1}for price)
   sort_direction: Please choose sort direction (enter%{key0}for desc|enter%{key1}for asc)
   error: ERROR!!! Wrong answer!!! Type correct number!!!
-  bye: Bye)
   help: (3)Help
   search_car: (1)Search a car
   show_all_cars: (2)Show all cars
-  exit: (4)Exit
-  helper: enter from 1 to 4
+  log_in: (4)Log in
+  sign_up: (5)Sign up
+  exit: (6)Exit
+  user_exit: (5)Exit
+  see_you_later: See you later!
+  user_log_out: (4)Log Out
+  helper: enter from 1 to 6
+  user_helper: enter from 1 to 5
+  get_email: email of new user
+  email_log_in: email of user
+  get_password: password of new user
+  password_log_in: password of user
+  email_exsist: email already exists
+  invalid_email: user entered invalid email
+  invalid_password: user entered invalid password
+  hello_user: Hello,
+  user_error: error!!! Such user does not exist!!!
   greeting:
   - Hi there!
   - My name is Oleksandr Lutsyuk
@@ -49,4 +63,15 @@ en:
   - The app have the ability to show the next statistics for each search
   - Total quantity – quantity of found cars.
   - Requests quantity - number of searches with the same rules as current.
+  -
+  - Registration-
+  - • Email
+  - o Should have email-type format
+  - o Should have at least 5 symbols before @
+  - o Should be unique
+  - • Password
+  - o Should have at least 1 capital letter
+  - o Should have at least 2 special characters
+  - o Should be at least 8 symbols
+  - o Should be no more than 20 symbols
   -

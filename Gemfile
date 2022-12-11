@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'bcrypt'
 gem 'bundler-audit'
 gem 'bundler-leak'
 gem 'colorize'
