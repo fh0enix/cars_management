@@ -13,14 +13,11 @@ class SignUp
   def initialize
     @users_db = []
     @user_data = { email: nil, password: nil }
-    @email_exsist = false
   end
 
   def call
     enter_email
     enter_password
-    @user_data[:email] = nil unless valid_email?(@user_data[:email])
-    @user_data[:password] = valid_password? ? crypt_password : nil
     user_data_is_valid ? show_user_menu : show_error
   end
 
@@ -40,20 +37,23 @@ class SignUp
     @user_data[:password] =~ VALID_PASS
   end
 
-  def valid_email?(email)
-    email =~ VALID_EMAIL
+  def valid_email?
+    @user_data[:email] =~ VALID_EMAIL
   end
 
   def show_error
     puts I18n.t(:invalid_email).red if @user_data[:email].nil?
     puts I18n.t(:invalid_password).red if @user_data[:password].nil?
-    puts I18n.t(:email_exsist).red if @email_exsist
+    puts I18n.t(:email_exsist).red unless @user_data[:email].nil?
   end
 
   def user_data_is_valid
+    @user_data[:email] = nil unless valid_email?
+    @user_data[:password] = valid_password? ? crypt_password : nil
+
     !@user_data[:email].nil? &&
       !@user_data[:password].nil? &&
-      !email_exsist
+      user_is_absent
   end
 
   def crypt_password
@@ -81,14 +81,11 @@ class SignUp
     UserMenu.new.run
   end
 
-  def email_exsist
+  def user_is_absent
     check_db
-    @users_db.each do |user|
+    user[:email] = @users_db.find do |user|
       next unless user[:email] == @user_data[:email]
-
-      @user_data[:email] = nil
-      @email_exsist = true
     end
-    @email_exsist
+    user[:email].nil?
   end
 end

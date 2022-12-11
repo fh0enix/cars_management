@@ -32,13 +32,13 @@ class LogIn < SignUp
 
   def user_data_is_valid
     check_db
-    valid = false
+
     @users_db.each do |user|
       next unless user[:email] == @user_data[:email]
       next unless BCrypt::Password.new(user[:password]) == @user_data[:password]
 
-      valid = true
+      return true
     end
-    valid
+    false
   end
 end
