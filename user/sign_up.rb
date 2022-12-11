@@ -9,6 +9,7 @@ class SignUp
   VALID_EMAIL = /^\w+([.-]?\w+){4,}@\w+([.-]?\w+)*(\.\w{2,})+$/
   VALID_PASS = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\^&*]{2,}).{8,20}$/
   USERS_DB_PATH = './.db/users.yml'
+  EMAIL_EXSIST = true
 
   def initialize
     @users_db = []
@@ -44,7 +45,7 @@ class SignUp
   def show_error
     puts I18n.t(:invalid_email).red if @user_data[:email].nil?
     puts I18n.t(:invalid_password).red if @user_data[:password].nil?
-    puts I18n.t(:email_exsist).red unless @user_data[:email].nil?
+    puts I18n.t(:email_exsist).red if @user_data[:email] == EMAIL_EXSIST
   end
 
   def user_data_is_valid
@@ -83,9 +84,12 @@ class SignUp
 
   def user_is_absent
     check_db
-    user[:email] = @users_db.find do |user|
+    @users_db.find do |user|
       next unless user[:email] == @user_data[:email]
+
+      @user_data[:email] = EMAIL_EXSIST
+      return false
     end
-    user[:email].nil?
+    true
   end
 end
