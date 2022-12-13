@@ -79,7 +79,7 @@ class SignUp
     puts I18n.t(:hello_user).red.on_white +
          @user_data[:email].upcase.black.on_white
 
-    UserMenu.new.run
+    UserMenu.new(@user_data[:email]).run
   end
 
   def user_is_absent
