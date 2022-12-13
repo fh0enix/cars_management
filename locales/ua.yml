@@ -26,6 +26,7 @@ ua:
   user_log_out: (5)Вийти
   helper: введіть від 1 до 6
   my_searches: (4)Mої Пошуки
+  my_searches_out: Mої Пошуки
   get_email: електроннa поштa нового користувача
   email_log_in: електроннa поштa користувача
   get_password: пароль нового користувача

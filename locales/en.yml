@@ -26,6 +26,7 @@ en:
   user_log_out: (5)Log Out
   helper: enter from 1 to 6
   my_searches: (4)My Searches
+  my_searches_out: My Searches
   get_email: email of new user
   email_log_in: email of user
   get_password: password of new user

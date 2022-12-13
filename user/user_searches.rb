@@ -48,7 +48,7 @@ class UserSearches < Printer
         search.each { |row| t << row }
         t.add_separator
       end
-      t.title = I18n.t(:my_searches).white.on_red
+      t.title = I18n.t(:my_searches_out).white.on_red
       t.style = TABLE_STYLES
     end
     puts table
