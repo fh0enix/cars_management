@@ -2,7 +2,7 @@
 
 require 'yaml'
 
-class UserSearches < Printer
+class OutputUserSearches < Output
   SEARCH_DB_PATH = './.db/searches.yml'
   SEARCH_FIELDS = %i[make model year_from year_to price_from price_to].freeze
 

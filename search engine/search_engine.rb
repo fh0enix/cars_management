@@ -3,7 +3,7 @@
 require 'yaml'
 require_relative 'preprocessing'
 require_relative 'formatting'
-require_relative 'printer'
+require_relative 'output'
 require_relative 'sorting'
 require_relative 'result_car'
 require_relative 'statistic'
@@ -24,6 +24,6 @@ class SearchEngine
     Formatting.new(@data, @user_data).call
     ResultCar.new(@data, @user_data, @results_car).call
     Sorting.new(@user_data, @results_car).call
-    Printer.new(@results_car, @user_data, @stat).call
+    Output.new(@results_car, @user_data, @stat).call
   end
 end

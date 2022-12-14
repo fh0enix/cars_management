@@ -45,12 +45,12 @@ class Statistic
   def update_stat(match_index)
     @stat[match_index][:requests_quantity] += 1
     @stat[match_index][:total_qantity] = @results_car.size
-    update_user
+    update_user(match_index)
     File.write(SEARCH_DB_PATH, YAML.dump(@stat))
     @stat[match_index][:requests_quantity]
   end
 
-  def update_user
+  def update_user(match_index)
     @user_data[:user][0][:time] = SESSION_TIME
     @stat[match_index][:user].push(@user_data[:user][0])
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'user_searches'
+require_relative 'output_user_searches'
 
 class UserMenu
   def initialize(user)
@@ -31,7 +31,7 @@ class UserMenu
     when 1 then SearchEngine.new(@user).run
     when 2 then AllCars.new.call
     when 3 then puts I18n.t(:help_txt)
-    when 4 then UserSearches.new(@user).call
+    when 4 then OutputUserSearches.new(@user).call
     when 5 then log_out
     when 6 then exit
     else puts I18n.t(:error).red

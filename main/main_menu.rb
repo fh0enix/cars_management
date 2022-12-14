@@ -3,7 +3,7 @@
 require 'colorize'
 require 'i18n'
 require_relative '../search engine/search_engine'
-require_relative 'all_cars'
+require_relative 'output_all_cars'
 require_relative '../user/sign_up'
 require_relative '../user/log_in'
 
@@ -23,7 +23,7 @@ class MainMenu
   def choose_menu_item
     case gets.to_i
     when 1 then SearchEngine.new.run
-    when 2 then AllCars.new.call
+    when 2 then OutputAllCars.new.call
     when 3 then puts I18n.t(:help_txt)
     when 4 then LogIn.new.call
     when 5 then SignUp.new.call

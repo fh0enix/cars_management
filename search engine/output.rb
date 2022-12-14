@@ -5,7 +5,7 @@ require 'colorize'
 require 'terminal-table'
 require_relative 'statistic'
 
-class Printer
+class Output
   TABLE_STYLES = { border_x: '='.colorize(color: :light_white, background: :green),
                    border_i: 'x'.colorize(color: :light_white, background: :green),
                    border_y: '|'.colorize(color: :light_white, background: :green),
