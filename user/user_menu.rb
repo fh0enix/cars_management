@@ -29,7 +29,7 @@ class UserMenu
   def choose_menu_item
     case gets.to_i
     when 1 then SearchEngine.new(@user).run
-    when 2 then AllCars.new.call
+    when 2 then OutputAllCars.new.call
     when 3 then puts I18n.t(:help_txt)
     when 4 then OutputUserSearches.new(@user).call
     when 5 then log_out
