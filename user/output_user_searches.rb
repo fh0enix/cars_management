@@ -6,8 +6,8 @@ class OutputUserSearches < Output
   SEARCH_DB_PATH = './.db/searches.yml'
   SEARCH_FIELDS = %i[make model year_from year_to price_from price_to].freeze
 
-  def initialize(user)
-    @user = user
+  def initialize(user_id)
+    @user_id = user
     @users_search = nil
     @all_user_search = []
   end
@@ -22,7 +22,7 @@ class OutputUserSearches < Output
     return unless File.exist?(SEARCH_DB_PATH)
 
     @users_search = YAML.load_file(SEARCH_DB_PATH)
-    @users_search.find { |search| search[:user].find { |user| user[:ID] == @user } }
+    @users_search.find { |search| search[:user].find { |user| user[:ID] == @user_id } }
   end
 
   def show_search
@@ -33,7 +33,7 @@ class OutputUserSearches < Output
   def search_grouping
     @users_search.each do |search|
       search[:user].each do |user|
-        next unless user[:ID] == @user
+        next unless user[:ID] == @user_id
 
         group = search.slice(*SEARCH_FIELDS)
         group[:time] = user[:time]
