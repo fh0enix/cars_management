@@ -11,9 +11,9 @@ class Output
                    border_y: '|'.colorize(color: :light_white, background: :green),
                    border_bottom: false }.freeze
 
-  def initialize(results_car, user_data, stat)
+  def initialize(results_car, input_data, stat)
     @results_car = results_car
-    @user_data = user_data
+    @input_data = input_data
     @stat = stat
   end
 
@@ -34,8 +34,8 @@ class Output
 
   def table_heading
     [[I18n.t(:total_quantity).white.on_red,
-      @user_data[:total_qantity].to_s.white.on_red],
+      @input_data[:total_qantity].to_s.white.on_red],
      [I18n.t(:requests_quantity).white.on_red,
-      Statistic.new(@user_data, @results_car, @stat).call.to_s.white.on_red]]
+      Statistic.new(@input_data, @results_car, @stat).call.to_s.white.on_red]]
   end
 end

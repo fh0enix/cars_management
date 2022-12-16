@@ -4,7 +4,7 @@ class LogIn < SignUp
   def call
     enter_email
     enter_password
-    user_data_is_valid ? show_user_menu : show_error
+    input_data_is_valid ? show_user_menu : show_error
   end
 
   private
@@ -15,27 +15,27 @@ class LogIn < SignUp
 
   def enter_email
     puts I18n.t(:email_log_in)
-    @user_data[:email] = gets.strip.downcase
+    @input_data[:email] = gets.strip.downcase
   end
 
   def enter_password
     puts I18n.t(:password_log_in)
-    @user_data[:password] = gets.strip
+    @input_data[:password] = gets.strip
   end
 
   def show_user_menu
     puts I18n.t(:hello_user).red.on_white +
-         @user_data[:email].upcase.black.on_white
+         @input_data[:email].upcase.black.on_white
 
-    UserMenu.new(@user_data[:email]).run
+    UserMenu.new(@input_data[:email]).run
   end
 
-  def user_data_is_valid
+  def input_data_is_valid
     check_db
 
     @users_db.each do |user|
-      next unless user[:email] == @user_data[:email]
-      next unless BCrypt::Password.new(user[:password]) == @user_data[:password]
+      next unless user[:email] == @input_data[:email]
+      next unless BCrypt::Password.new(user[:password]) == @input_data[:password]
 
       return true
     end

@@ -6,15 +6,15 @@ class Statistic
   SEARCH_DB_PATH = './.db/searches.yml'
   SESSION_TIME = Time.new.strftime('%Y-%m-%d %H:%M')
 
-  def initialize(user_data, results_car, stat)
+  def initialize(input_data, results_car, stat)
     @stat = stat
     @results_car = results_car
-    @user_data = user_data
+    @input_data = input_data
   end
 
   def call
     check_db
-    match_index = @stat.index { |stat_req| @user_data.slice(*SEARCH_FIELDS) == stat_req.slice(*SEARCH_FIELDS) }
+    match_index = @stat.index { |stat_req| @input_data.slice(*SEARCH_FIELDS) == stat_req.slice(*SEARCH_FIELDS) }
     if @stat.empty? || match_index.nil?
       create_new_stat
     else
@@ -33,7 +33,7 @@ class Statistic
   end
 
   def create_new_stat
-    save_search = @user_data.slice(*STAT_FIELDS)
+    save_search = @input_data.slice(*STAT_FIELDS)
     save_search[:requests_quantity] = 1
     save_search[:total_qantity] = @results_car.size
     save_search[:user][0][:time] = SESSION_TIME
@@ -51,7 +51,7 @@ class Statistic
   end
 
   def update_user(match_index)
-    @user_data[:user][0][:time] = SESSION_TIME
-    @stat[match_index][:user].push(@user_data[:user][0])
+    @input_data[:user][0][:time] = SESSION_TIME
+    @stat[match_index][:user].push(@input_data[:user][0])
   end
 end

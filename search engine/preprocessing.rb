@@ -7,8 +7,8 @@ class Preprocessing
   ANSWER_OPTION = [' 0 ', ' 1 '].freeze
   LANG_OPTION = '<ENG>'
 
-  def initialize(user_data)
-    @result_data = user_data
+  def initialize(input_data)
+    @result_data = input_data
   end
 
   def call

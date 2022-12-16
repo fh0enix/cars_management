@@ -14,16 +14,16 @@ class SearchEngine
   def initialize(user = nil)
     @user = user
     @data = YAML.safe_load_file(DB_PATH, symbolize_names: true)
-    @user_data = { user: [{ ID: @user, time: nil }] }
+    @input_data = { user: [{ ID: @user, time: nil }] }
     @results_car = []
     @stat = []
   end
 
   def run
-    Preprocessing.new(@user_data).call
-    Formatting.new(@data, @user_data).call
-    ResultCar.new(@data, @user_data, @results_car).call
-    Sorting.new(@user_data, @results_car).call
-    Output.new(@results_car, @user_data, @stat).call
+    Preprocessing.new(@input_data).call
+    Formatting.new(@data, @input_data).call
+    ResultCar.new(@data, @input_data, @results_car).call
+    Sorting.new(@input_data, @results_car).call
+    Output.new(@results_car, @input_data, @stat).call
   end
 end
