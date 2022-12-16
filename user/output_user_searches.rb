@@ -13,12 +13,12 @@ class OutputUserSearches < Output
   end
 
   def call
-    user_made_search ? show_search : show_error
+    user_made_search? ? show_search : show_error
   end
 
   private
 
-  def user_made_search
+  def user_made_search?
     return unless File.exist?(SEARCH_DB_PATH)
 
     @users_search = YAML.load_file(SEARCH_DB_PATH)
