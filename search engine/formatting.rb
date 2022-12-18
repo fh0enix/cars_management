@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Formatting
-  def initialize(data, user_data)
+  def initialize(data, input_data)
     @data = data
-    @result_data = user_data
+    @result_data = input_data
     @make = []
     @model = []
   end

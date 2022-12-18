@@ -3,7 +3,7 @@
 require 'yaml'
 require_relative 'preprocessing'
 require_relative 'formatting'
-require_relative 'printer'
+require_relative 'output'
 require_relative 'sorting'
 require_relative 'result_car'
 require_relative 'statistic'
@@ -11,18 +11,19 @@ require_relative 'statistic'
 class SearchEngine
   DB_PATH = './.db/db.yml'
 
-  def initialize
+  def initialize(user = nil)
+    @user = user
     @data = YAML.safe_load_file(DB_PATH, symbolize_names: true)
-    @user_data = {}
+    @input_data = { user: [{ ID: @user, time: nil }] }
     @results_car = []
     @stat = []
   end
 
   def run
-    Preprocessing.new(@user_data).call
-    Formatting.new(@data, @user_data).call
-    ResultCar.new(@data, @user_data, @results_car).call
-    Sorting.new(@user_data, @results_car).call
-    Printer.new(@results_car, @user_data, @stat).call
+    Preprocessing.new(@input_data).call
+    Formatting.new(@data, @input_data).call
+    ResultCar.new(@data, @input_data, @results_car).call
+    Sorting.new(@input_data, @results_car).call
+    Output.new(@results_car, @input_data, @stat).call
   end
 end

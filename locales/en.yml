@@ -22,11 +22,11 @@ en:
   log_in: (4)Log in
   sign_up: (5)Sign up
   exit: (6)Exit
-  user_exit: (5)Exit
   see_you_later: See you later!
-  user_log_out: (4)Log Out
+  user_log_out: (5)Log Out
   helper: enter from 1 to 6
-  user_helper: enter from 1 to 5
+  my_searches: (4)My Searches
+  my_searches_out: My Searches
   get_email: email of new user
   email_log_in: email of user
   get_password: password of new user
@@ -34,6 +34,7 @@ en:
   email_exsist: email already exists
   invalid_email: user entered invalid email
   invalid_password: user entered invalid password
+  searches_do_not_exist: Searches do not exist !!!
   hello_user: Hello,
   user_error: error!!! Such user does not exist!!!
   greeting:

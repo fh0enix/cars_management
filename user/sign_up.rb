@@ -13,52 +13,52 @@ class SignUp
 
   def initialize
     @users_db = []
-    @user_data = { email: nil, password: nil }
+    @input_data = { email: nil, password: nil }
   end
 
   def call
     enter_email
     enter_password
-    user_data_is_valid ? show_user_menu : show_error
+    input_data_is_valid ? show_user_menu : show_error
   end
 
   private
 
   def enter_email
     puts I18n.t(:get_email)
-    @user_data[:email] = gets.strip.to_s.downcase
+    @input_data[:email] = gets.strip.to_s.downcase
   end
 
   def enter_password
     puts I18n.t(:get_password)
-    @user_data[:password] = gets.strip.to_s
+    @input_data[:password] = gets.strip.to_s
   end
 
   def valid_password?
-    @user_data[:password] =~ VALID_PASS
+    @input_data[:password] =~ VALID_PASS
   end
 
   def valid_email?
-    @user_data[:email] =~ VALID_EMAIL
+    @input_data[:email] =~ VALID_EMAIL
   end
 
   def show_error
-    puts I18n.t(:invalid_email).red if @user_data[:email].nil?
-    puts I18n.t(:invalid_password).red if @user_data[:password].nil?
-    puts I18n.t(:email_exsist).red if @user_data[:email] == EMAIL_EXSIST
+    puts I18n.t(:invalid_email).red if @input_data[:email].nil?
+    puts I18n.t(:invalid_password).red if @input_data[:password].nil?
+    puts I18n.t(:email_exsist).red if @input_data[:email] == EMAIL_EXSIST
   end
 
-  def user_data_is_valid
-    @user_data[:email] = nil unless valid_email?
-    @user_data[:password] = valid_password? ? crypt_password : nil
+  def input_data_is_valid
+    @input_data[:email] = nil unless valid_email?
+    @input_data[:password] = valid_password? ? crypt_password : nil
 
-    !@user_data[:email].nil? &&
-      !@user_data[:password].nil? &&
+    !@input_data[:email].nil? &&
+      !@input_data[:password].nil? &&
       user_is_absent
   end
 
   def crypt_password
-    BCrypt::Password.create(@user_data[:password]).to_s
+    BCrypt::Password.create(@input_data[:password]).to_s
   end
 
   def check_db
@@ -70,24 +70,24 @@ class SignUp
   end
 
   def add_user_to_db
-    @users_db.push(@user_data)
+    @users_db.push(@input_data)
     File.write(USERS_DB_PATH, YAML.dump(@users_db))
   end
 
   def show_user_menu
     add_user_to_db
     puts I18n.t(:hello_user).red.on_white +
-         @user_data[:email].upcase.black.on_white
+         @input_data[:email].upcase.black.on_white
 
-    UserMenu.new.run
+    UserMenu.new(@input_data[:email]).run
   end
 
   def user_is_absent
     check_db
     @users_db.find do |user|
-      next unless user[:email] == @user_data[:email]
+      next unless user[:email] == @input_data[:email]
 
-      @user_data[:email] = EMAIL_EXSIST
+      @input_data[:email] = EMAIL_EXSIST
       return false
     end
     true

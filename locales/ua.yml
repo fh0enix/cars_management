@@ -22,11 +22,11 @@ ua:
   log_in: (4)Увійти
   sign_up: (5)Реєстрація
   exit: (6)Вихід
-  user_exit: (5)Вихід
   see_you_later: До зустрічі пізніше!
-  user_log_out: (4)Вийти
+  user_log_out: (5)Вийти
   helper: введіть від 1 до 6
-  user_helper: введіть від 1 до 5
+  my_searches: (4)Mої Пошуки
+  my_searches_out: Mої Пошуки
   get_email: електроннa поштa нового користувача
   email_log_in: електроннa поштa користувача
   get_password: пароль нового користувача
@@ -34,6 +34,7 @@ ua:
   email_exsist: користувач із такою електронною адресою вже існує
   invalid_email: користувач ввів недійсну електронну пошту
   invalid_password: користувач ввів недійсний пароль
+  searches_do_not_exist: Пошуків не існує!!!
   hello_user: Привіт,
   user_error: Помилка!!! Такого користувача не існує!!!
   greeting:
