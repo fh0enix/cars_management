@@ -9,7 +9,6 @@ class OutputUserSearches < Output
   def initialize(user_id)
     @user_id = user
     @users_search = nil
-    @all_user_search = []
   end
 
   def call
@@ -31,20 +30,17 @@ class OutputUserSearches < Output
   end
 
   def search_grouping
-    @users_search.each do |search|
-      search[:user].each do |user|
+    @users_search.filter_map do |search|
+      search[:user].filter_map do |user|
         next unless user[:ID] == @user_id
-
-        group = search.slice(*SEARCH_FIELDS)
-        group[:time] = user[:time]
-        @all_user_search << group
+        search.slice(*SEARCH_FIELDS).merge(time: user[:time])
       end
-    end
+    end.flatten
   end
 
   def output
     table = Terminal::Table.new do |t|
-      @all_user_search.each do |search|
+      search_grouping.each do |search|
         search.each { |row| t << row }
         t.add_separator
       end
