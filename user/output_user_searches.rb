@@ -7,7 +7,7 @@ class OutputUserSearches < Output
   SEARCH_FIELDS = %i[make model year_from year_to price_from price_to].freeze
 
   def initialize(user_id)
-    @user_id = user
+    @user_id = user_id
     @users_search = nil
   end
 
@@ -24,11 +24,6 @@ class OutputUserSearches < Output
     @users_search.find { |search| search[:user].find { |user| user[:ID] == @user_id } }
   end
 
-  def show_search
-    search_grouping
-    output
-  end
-
   def search_grouping
     @users_search.filter_map do |search|
       search[:user].filter_map do |user|
@@ -38,7 +33,7 @@ class OutputUserSearches < Output
     end.flatten
   end
 
-  def output
+  def show_search
     table = Terminal::Table.new do |t|
       search_grouping.each do |search|
         search.each { |row| t << row }
