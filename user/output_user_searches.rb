@@ -28,6 +28,7 @@ class OutputUserSearches < Output
     @users_search.filter_map do |search|
       search[:user].filter_map do |user|
         next unless user[:ID] == @user_id
+        
         search.slice(*SEARCH_FIELDS).merge(time: user[:time])
       end
     end.flatten
