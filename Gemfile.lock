@@ -11,6 +11,7 @@ GEM
       thor (>= 0.18, < 2)
     colorize (0.8.1)
     concurrent-ruby (1.1.10)
+    ffaker (2.21.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     json (2.6.2)
@@ -56,6 +57,7 @@ DEPENDENCIES
   bundler-audit
   bundler-leak
   colorize
+  ffaker
   i18n
   lefthook
   rake
