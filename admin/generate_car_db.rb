@@ -11,17 +11,23 @@ class GenerateCarDb
     @car_db = []
   end
 
-  def add_one_new_record
-    check_db
-    @car_db.push(fake_car)
-    File.write(CAR_DB_PATH, YAML.dump(@car_db))
-  end
 
-  def add_multiple_records(number)
+  def add_records(number)
     check_db
     number.times do
       @car_db.push(fake_car)
     end
+    File.write(CAR_DB_PATH, YAML.dump(@car_db))
+  end
+
+  def ask_question
+    puts 'Enter number of cars to be added: '
+    input
+  end
+
+  def add_record
+    check_db
+    @car_db.push(fake_car)
     File.write(CAR_DB_PATH, YAML.dump(@car_db))
   end
 
@@ -30,6 +36,12 @@ class GenerateCarDb
   end
 
   private
+
+  def input
+    $stdout.flush
+    number = $stdin.gets.chomp.to_i
+    add_records(number)
+  end
 
   def fake_car
     {
@@ -40,12 +52,8 @@ class GenerateCarDb
       odometer: rand(15_000..120_000),
       price: rand(1000..50_000),
       description: FFaker::Lorem.phrase,
-      date_added: random_date
+      date_added: Date.now
     }
-  end
-
-  def random_date
-    "#{rand(1..28)}/#{rand(1..12)}/#{rand(1999..2022)}"
   end
 
   def random_hex
