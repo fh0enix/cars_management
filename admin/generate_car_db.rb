@@ -6,6 +6,7 @@ require 'yaml'
 
 class GenerateCarDb
   CAR_DB_PATH = './.db/db.yml'
+  TAIL_OF_HEX = '-330f-11ec-8d3d-0242ac130003'
   def initialize
     @car_db = []
   end
@@ -48,7 +49,7 @@ class GenerateCarDb
   end
 
   def random_hex
-    "#{SecureRandom.hex(4)}-330f-11ec-8d3d-0242ac130003"
+    SecureRandom.hex(4) + TAIL_OF_HEX
   end
 
   def check_db
