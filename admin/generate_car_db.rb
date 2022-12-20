@@ -56,6 +56,10 @@ class GenerateCarDb
     }
   end
 
+  def random_date
+    "#{rand(1..28)}/#{rand(1..12)}/#{rand(2021..2022)}"
+  end
+
   def random_hex
     SecureRandom.hex(4) + TAIL_OF_HEX
   end
