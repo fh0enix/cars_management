@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ffaker'
 require 'securerandom'
 require 'yaml'
@@ -5,7 +7,7 @@ require 'yaml'
 class GenerateCarDb
   CAR_DB_PATH = './.db/db.yml'
   def initialize
-  @car_db = []
+    @car_db = []
   end
 
   def add_one_new_record
@@ -34,8 +36,8 @@ class GenerateCarDb
       make: FFaker::Vehicle.make,
       model: FFaker::Vehicle.model,
       year: FFaker::Vehicle.year.to_i,
-      odometer: rand(15000..120000),
-      price: rand(1000..50000),
+      odometer: rand(15_000..120_000),
+      price: rand(1000..50_000),
       description: FFaker::Lorem.phrase,
       date_added: random_date
     }
@@ -53,4 +55,3 @@ class GenerateCarDb
     @car_db = YAML.load_file(CAR_DB_PATH) if File.exist?(CAR_DB_PATH)
   end
 end
-
