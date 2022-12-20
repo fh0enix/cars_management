@@ -45,7 +45,7 @@ class GenerateCarDb
   end
 
   def random_date
-    "#{rand(1..28)}/#{rand(1..12)}/#{rand(1999..2022)}"
+    "#{rand(1..28)}/#{rand(1..12)}/#{rand(2021..2022)}"
   end
 
   def random_hex
