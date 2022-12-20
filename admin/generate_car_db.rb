@@ -11,7 +11,6 @@ class GenerateCarDb
     @car_db = []
   end
 
-
   def add_records(number)
     check_db
     number.times do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'admin/generate_car_db.rb'
+require_relative 'admin/generate_car_db'
 
 namespace :db do
   namespace :cars do
