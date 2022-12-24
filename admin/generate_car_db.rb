@@ -6,7 +6,7 @@ require 'yaml'
 
 class GenerateCarDb
   CAR_DB_PATH = './.db/db.yml'
-  TAIL_OF_HEX = '-330f-11ec-8d3d-0242ac130003'
+
   def initialize
     @car_db = []
   end
@@ -44,7 +44,7 @@ class GenerateCarDb
 
   def fake_car
     {
-      id: random_hex,
+      id: SecureRandom.uuid,
       make: FFaker::Vehicle.make,
       model: FFaker::Vehicle.model,
       year: FFaker::Vehicle.year.to_i,
@@ -57,10 +57,6 @@ class GenerateCarDb
 
   def random_date
     "#{rand(1..28)}/#{rand(1..12)}/#{Time.new.year}"
-  end
-
-  def random_hex
-    SecureRandom.hex(4) + TAIL_OF_HEX
   end
 
   def check_db
