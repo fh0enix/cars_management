@@ -15,8 +15,8 @@ namespace :db do
     end
 
     desc 'Add multiple records to car db'
-    task :add_records, [:number] do |_t, number|
-      GenerateCarDb.new.add_rec(number[:number].to_i)
+    task :add_records, [:number] do |_t, args|
+      GenerateCarDb.new.add_rec(args[:number].to_i)
     end
   end
 end
