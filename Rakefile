@@ -11,12 +11,12 @@ namespace :db do
 
     desc 'Add one new record to car db'
     task :add_record do
-      GenerateCarDb.new.add_record
+      GenerateCarDb.new.add_rec
     end
 
     desc 'Add multiple records to car db'
-    task :add_records do
-      GenerateCarDb.new.ask_question
+    task :add_records, [:number] do |t, number|
+      GenerateCarDb.new.add_rec(number[:number].to_i)
     end
   end
 end
