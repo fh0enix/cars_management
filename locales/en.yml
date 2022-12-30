@@ -40,7 +40,7 @@ en:
   create_ad: Create an Advertisement
   update_ad: Update an Advertisement
   del_ad: Delete an Advertisement
-  enter_id: Enter the id of the updatable advertisement
+  enter_id: Enter the id of the advertisement
   index_nil_error: Attachment with id %{key} doesn’t exist
   deleted_car_message: You have successfully deleted the car with id %{key} !
   created_car_message: You have successfully created the car with id %{key} !

@@ -50,13 +50,13 @@ module AdvertPreprosessing
   end
 
   def year_checker(data)
-    @errors << I18n.t(:current_year_error, key: name.yellow.on_red) if data > Time.new.year
-    @errors << I18n.t(:year_1900_error, key: name.yellow.on_red) if data <= 1900
+    @errors << I18n.t(:current_year_error) if data > Time.new.year
+    @errors << I18n.t(:year_1900_error) if data <= 1900
     data
   end
 
   def description_checker(data)
-    @errors << I18n.t(:description_error, key: name.yellow.on_red) if data.size > 5000
+    @errors << I18n.t(:description_error) if data.size > 5000
     data
   end
 end
