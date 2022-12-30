@@ -37,6 +37,27 @@ en:
   searches_do_not_exist: Searches do not exist !!!
   hello_user: Hello,
   user_error: error!!! Such user does not exist!!!
+  create_ad: Create an Advertisement
+  update_ad: Update an Advertisement
+  del_ad: Delete an Advertisement
+  enter_id: Enter the id of the updatable advertisement
+  index_nil_error: Attachment with id %{key} doesn’t exist
+  deleted_car_message: You have successfully deleted the car with id %{key} !
+  created_car_message: You have successfully created the car with id %{key} !
+  make: Make
+  model: Model
+  year: Year
+  odometer: Odometer
+  price: Price
+  description: Description
+  admin_log_out: Log Out
+  least_3_symbols_error: WARNING! %{key} should have at least 3 symbols
+  most_50_symbols_error: WARNING! %{key} should have at most 50 symbols
+  english_letters_error: WARNING! %{key} should consists only of English letters
+  zero_error: WARNING! %{key} should be >= 0
+  current_year_error: Year Should be not greater than current year
+  year_1900_error: Year Should be greater than 1900 year
+  description_error: Description should have no more than 5000 symbols
   greeting:
   - Hi there!
   - My name is Oleksandr Lutsyuk

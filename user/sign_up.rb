@@ -4,6 +4,7 @@ require 'yaml'
 require 'bcrypt'
 require 'colorize'
 require_relative 'user_menu'
+require_relative '../admin/admin_menu.rb'
 
 class SignUp
   VALID_EMAIL = /^\w+([.-]?\w+){4,}@\w+([.-]?\w+)*(\.\w{2,})+$/
@@ -79,7 +80,11 @@ class SignUp
     puts I18n.t(:hello_user).red.on_white +
          @input_data[:email].upcase.black.on_white
 
-    UserMenu.new(@input_data[:email]).run
+    user_is_admin? ? AdminMenu.new.run : UserMenu.new(@input_data[:email]).run
+  end
+
+  def user_is_admin?
+    @users_db[0][:email] == @input_data[:email]
   end
 
   def user_is_absent

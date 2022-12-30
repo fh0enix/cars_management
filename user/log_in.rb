@@ -27,7 +27,7 @@ class LogIn < SignUp
     puts I18n.t(:hello_user).red.on_white +
          @input_data[:email].upcase.black.on_white
 
-    UserMenu.new(@input_data[:email]).run
+         user_is_admin? ? AdminMenu.new.run : UserMenu.new(@input_data[:email]).run
   end
 
   def input_data_is_valid
