@@ -34,9 +34,9 @@ module AdvertPreprosessing
   end
 
   def make_model_checker(name, data)
-    @errors << I18n.t(:least_3_symbols_error, key: name.yellow.on_red) if data.size < 3
-    @errors << I18n.t(:most_50_symbols_error, key: name.yellow.on_red) if data.size > 50
-    @errors << I18n.t(:english_letters_error, key: name.yellow.on_red) unless valid_eng_letter(data)
+    @errors << I18n.t(:least_3_symbols_error, key: name.red.on_white) if data.size < 3
+    @errors << I18n.t(:most_50_symbols_error, key: name.red.on_white) if data.size > 50
+    @errors << I18n.t(:english_letters_error, key: name.red.on_white) unless valid_eng_letter(data)
     data
   end
 
@@ -45,7 +45,7 @@ module AdvertPreprosessing
   end
 
   def zero_checker(name, data)
-    @errors << I18n.t(:zero_error, key: name.yellow.on_red) if data.negative?
+    @errors << I18n.t(:zero_error, key: name.red.on_white) if data.negative?
     data
   end
 

@@ -10,7 +10,7 @@ class AdminMenu
   include AdvertPreprosessing
 
   CAR_DB_PATH = './.db/db.yml'
-  TIME_FORMAT = '%Y/%m/%d'
+  TIME_FORMAT = '%d/%m/%Y'
 
   def initialize
     @car_db = YAML.safe_load_file(CAR_DB_PATH, symbolize_names: true)
@@ -48,7 +48,7 @@ class AdminMenu
     car[:id] = SecureRandom.uuid
     car_value(car)
     car[:date_added] = Time.new.strftime(TIME_FORMAT)
-    @errors.nil? ? add_car_to_db(car) : show_errors
+    @errors.empty? ? add_car_to_db(car) : show_errors
   end
 
   def car_value(car)
@@ -64,7 +64,7 @@ class AdminMenu
     puts I18n.t(:enter_id)
     ad_id = gets.strip
     index = mach_index(ad_id)
-    index.nil? ? puts(I18n.t(:index_nil_error, key: ad_id.yellow.on_red)) : update_car(index)
+    index.nil? ? puts(I18n.t(:index_nil_error, key: ad_id.red.on_white)) : update_car(index)
   end
 
   def mach_index(ad_id)
@@ -74,18 +74,18 @@ class AdminMenu
   def update_car(index)
     car = @car_db[index]
     car_value(car)
-    @errors.nil? ? update_car_in_db(index, car) : show_errors
+    @errors.empty? ? update_car_in_db(index, car) : show_errors
   end
 
   def del_ad
     puts I18n.t(:enter_id)
     ad_id = gets.strip
     index = mach_index(ad_id)
-    index.nil? ? puts(I18n.t(:index_nil_error, key: ad_id.yellow.on_red)) : car_delete(index)
+    index.nil? ? puts(I18n.t(:index_nil_error, key: ad_id.red.on_white)) : car_delete(index)
   end
 
   def car_delete(index)
-    puts I18n.t(:deleted_car_message, key: car_db[index][:id].yellow.on_red)
+    puts I18n.t(:deleted_car_message, key: @car_db[index][:id].red.on_white)
     @car_db.delete(index)
     File.write(CAR_DB_PATH, YAML.dump(@car_db))
   end
@@ -96,12 +96,13 @@ class AdminMenu
     File.write(CAR_DB_PATH, YAML.dump(@car_db))
   end
 
-  def update_car_in_db(index, car)2
+  def update_car_in_db(index, car)
+    puts I18n.t(:update_car_message, key: @car_db[index][:id].red.on_white)
     @car_db[index].merge!(car)
     File.write(CAR_DB_PATH, YAML.dump(@car_db))
   end
 
   def show_errors
-    @errors.each { |error| puts error.red }
+    @errors.each { |error| puts error }
   end
 end
