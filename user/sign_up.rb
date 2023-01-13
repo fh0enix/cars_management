@@ -4,7 +4,7 @@ require 'yaml'
 require 'bcrypt'
 require 'colorize'
 require_relative 'user_menu'
-require_relative '../admin/admin_menu.rb'
+require_relative '../admin/admin_menu'
 
 class SignUp
   VALID_EMAIL = /^\w+([.-]?\w+){4,}@\w+([.-]?\w+)*(\.\w{2,})+$/
